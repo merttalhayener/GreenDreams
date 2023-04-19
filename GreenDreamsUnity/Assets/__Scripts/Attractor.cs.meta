@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36ad4aaf0d5e8504cb88e2d25dbb5260
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - inventory: {instanceID: 0}
+  - pickClip: {fileID: 8300000, guid: 88bb523a2bf24e748af8d4ce52da3f94, type: 3}
+  - source: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

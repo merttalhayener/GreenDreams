@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec20d9c7a74947e40b5b64a670c3aad6, type: 3}
+  m_Name: Equipment
+  m_EditorClassIdentifier: 
+  savePath: 
+  database: {fileID: 11400000, guid: 619a3a77a5cf9dd4bb36c40a3a1ebb9a, type: 2}
+  Container:
+    Items:
+    - AllowedItems: 07000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterHat
+        Id: 12
+        buffs: []
+      amount: 1
+      ID: 12
+    - AllowedItems: 04000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterGlasses
+        Id: 5
+        buffs: []
+      amount: 1
+      ID: 5
+    - AllowedItems: 02000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterShirt
+        Id: 7
+        buffs: []
+      amount: 1
+      ID: 7
+    - AllowedItems: 06000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterGlove
+        Id: 8
+        buffs: []
+      amount: 1
+      ID: 8
+    - AllowedItems: 03000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterPant
+        Id: 3
+        buffs: []
+      amount: 1
+      ID: 3
+    - AllowedItems: 05000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterShoes
+        Id: 4
+        buffs: []
+      amount: 1
+      ID: 4
+    - AllowedItems: 09000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterRing
+        Id: 13
+        buffs: []
+      amount: 1
+      ID: 13
+    - AllowedItems: 08000000
+      parent: {fileID: 0}
+      item:
+        Name: StarterNecklace
+        Id: 9
+        buffs: []
+      amount: 1
+      ID: 9
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: 0
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: Axe
+        Id: 2
+        buffs:
+        - attribute: 2
+          value: 5
+          min: 5
+          max: 7
+      amount: 1
+      ID: 2
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: Axe
+        Id: 2
+        buffs:
+        - attribute: 2
+          value: 5
+          min: 5
+          max: 7
+      amount: 1
+      ID: 2
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+      ID: -1
+    - AllowedItems: 0100000000000000
+      parent: {fileID: 0}
+      item:
+        Name: Apple
+        Id: 99
+        buffs: []
+      amount: 2
+      ID: 99

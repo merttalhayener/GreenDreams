@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efaeb925619c41418f65ebc2791e5aa, type: 3}
+  m_Name: Belt
+  m_EditorClassIdentifier: 
+  Id: 6
+  uiDisplay: {fileID: 21300000, guid: da09804303305f542a686824630e7269, type: 3}
+  type: 1
+  description: It's classic belt
+  buffs: []
+  groundItem: {fileID: 6544734768900415561, guid: 101ee0da20ef7b248ab197efd648e171,
+    type: 3}
