@@ -19,7 +19,7 @@ MonoBehaviour:
   description: 
   data:
     Name: 
-    Id: 39
+    Id: 15
     buffs: []
   groundItem: {fileID: 3387476929911335282, guid: b46d37d88e91ccd478cd84c29bd67fb6,
     type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CursorLock : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CursorLock : MonoBehaviour
         toolbeltIsClosed = true;
         toolbeltOnScreenIsClosed = false;
 
+
         Inventory.SetActive(false);
         Equipment.SetActive(false);
         Toolbelt.SetActive(false);
@@ -35,7 +37,7 @@ public class CursorLock : MonoBehaviour
         {
             if (inventoryIsClosed & equipmentIsClosed == true &toolbeltIsClosed ==true && toolbeltOnScreenIsClosed == false)
             {
-
+                Debug.Log("bastý");
                 Inventory.SetActive(true);
                 Equipment.SetActive(true);
                 Toolbelt.SetActive(true);
@@ -44,6 +46,11 @@ public class CursorLock : MonoBehaviour
                 equipmentIsClosed = false;
                 toolbeltIsClosed = false;
                 toolbeltOnScreenIsClosed = true;
+               
+                //Alpha deðiþikliði
+                Color tmp = Inventory.GetComponent<Image>().color;
+                tmp.a = 1f;
+                Inventory.GetComponent<Image>().color = tmp;
             }
             else
             {
