@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     private BoneCombiner boneCombiner;
 
+    public SceneControl reset;
+
     private void Start()
     {
         boneCombiner = new BoneCombiner(gameObject);
@@ -181,6 +183,10 @@ public class Player : MonoBehaviour
         {
             inventory.Load();
             equipment.Load();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            reset.ResetTheGame();
         }
     }
 
