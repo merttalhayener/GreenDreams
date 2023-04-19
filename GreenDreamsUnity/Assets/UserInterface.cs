@@ -9,7 +9,7 @@ using System;
 
 public abstract class UserInterface : MonoBehaviour
 {
-
+   
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     void Start()
@@ -124,6 +124,7 @@ public static class MouseData
 
 public static class ExtensionMethods
 {
+   
     public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
@@ -131,13 +132,13 @@ public static class ExtensionMethods
             if (_slot.Value.item.Id >= 0)
             {
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.ItemObject.uiDisplay;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1,1,1,0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
