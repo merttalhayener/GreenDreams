@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,6 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
-        healthSlider.value = health;
+        healthSlider.value = Mathf.Lerp(healthSlider.value, health, 1);
     }
 }

@@ -1800,10 +1800,19 @@ MonoBehaviour:
   Equipment: {fileID: 0}
   ToolbeltOnScreen: {fileID: 0}
   Toolbelt: {fileID: 0}
+  buildingCanvas: {fileID: 0}
+  questBG: {fileID: 0}
+  miniMap: {fileID: 0}
+  weatherBG: {fileID: 0}
   inventoryIsClosed: 0
   equipmentIsClosed: 0
   toolbeltOnScreenIsClosed: 0
   toolbeltIsClosed: 0
+  miniMapIsClosed: 0
+  questBGIsClosed: 0
+  weatherBGIsClosed: 0
+  inventoryOpenSound: {fileID: 0}
+  source: {fileID: 0}
 --- !u!114 &2123049296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,6 +1831,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 1440463161}
   offhandWristTransform: {fileID: 2140867054}
   offhandHandTransform: {fileID: 1739712127}
+  reset: {fileID: 0}
 --- !u!1 &5232989056113947931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,7 +2845,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2886054597295254267}
-  - {fileID: 543450651825255169}
   m_Father: {fileID: 1753223382546797424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2966,137 +2975,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 526360305}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1883428074
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 5773364635195575647}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1818182
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.45454547
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1818182
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.123
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.009
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.44659436
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.6971736
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.54536813
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.13067552
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -151.303
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 49.733
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -89.591
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_Name
-      value: Axe
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144667604794983660, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603833388322048518, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 72fd9182a58a485458bfbbd42ab6bc91, type: 3}
---- !u!4 &543450651825255169 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-    type: 3}
-  m_PrefabInstance: {fileID: 1883428074}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4603833389668507372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4603833388322048518, guid: 72fd9182a58a485458bfbbd42ab6bc91,
-    type: 3}
-  m_PrefabInstance: {fileID: 1883428074}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1086629541
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4603833389668507372}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.14291556, y: 0.6446966, z: 0.7611079}
-  m_Center: {x: 0.00012209553, y: -0.024835512, z: 0.20871432}

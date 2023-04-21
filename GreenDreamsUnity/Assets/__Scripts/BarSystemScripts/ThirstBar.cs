@@ -15,6 +15,6 @@ public class ThirstBar : MonoBehaviour
 
     public void SetThirst(float thirst)
     {
-        thirstSlider.value = thirst;
+        thirstSlider.value = Mathf.Lerp(thirstSlider.value,thirst,1);
     }
 }

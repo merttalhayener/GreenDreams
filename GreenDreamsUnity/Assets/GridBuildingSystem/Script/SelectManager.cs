@@ -29,7 +29,7 @@ public class SelectManager : MonoBehaviour
            
             if (Physics.Raycast(ray,out hit , 1000 , buildingLayer))
             {
-             if (hit.collider.gameObject.CompareTag("Objects"))
+             if (hit.collider.gameObject.CompareTag("Objects")&& buildingManager.pendingObject == null)
              {
                     hit.collider.gameObject.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
                     Select(hit.collider.gameObject);
@@ -56,12 +56,12 @@ public class SelectManager : MonoBehaviour
 
         Outline outLine = obj.GetComponent<Outline>();
       
-        if (outLine==null && buildingManager.pendingObject == null)
+        if (outLine==null )
         {
             obj.AddComponent<Outline>();
         }
 
-        else
+        else if(outLine!=null )
         {
             outLine.enabled = true;
         }
@@ -79,7 +79,6 @@ public class SelectManager : MonoBehaviour
             selectedObject.GetComponent<Outline>().enabled = false;
             selectedObject = null;
         }
-       
     }
 
     public void Move()

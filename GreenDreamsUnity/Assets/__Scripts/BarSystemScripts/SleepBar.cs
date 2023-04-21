@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,6 @@ public class SleepBar : MonoBehaviour
 
     public void SetSleep(float sleep)
     {
-        sleepSlider.value = sleep;
+        sleepSlider.value = Mathf.Lerp(sleepSlider.value, sleep, 1);
     }
 }

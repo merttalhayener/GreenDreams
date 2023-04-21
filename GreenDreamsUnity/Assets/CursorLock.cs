@@ -13,6 +13,8 @@ public class CursorLock : MonoBehaviour
     public GameObject questBG;
     public GameObject miniMap;
     public GameObject weatherBG;
+    
+
     public bool inventoryIsClosed;
     public bool equipmentIsClosed;
     public bool toolbeltOnScreenIsClosed;
@@ -20,7 +22,8 @@ public class CursorLock : MonoBehaviour
     public bool miniMapIsClosed;
     public bool questBGIsClosed;
     public bool weatherBGIsClosed;
-
+    public bool buildingPanelIsClosed;
+    
 
     [SerializeField] private AudioClip inventoryOpenSound;
     [SerializeField] private AudioSource source;
@@ -29,6 +32,7 @@ public class CursorLock : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         inventoryIsClosed = true;
         equipmentIsClosed = true;
         toolbeltIsClosed = true;
@@ -36,6 +40,7 @@ public class CursorLock : MonoBehaviour
         miniMapIsClosed = false;
         questBGIsClosed = false;
         weatherBGIsClosed = false;
+        buildingPanelIsClosed = false;
 
 
         Inventory.SetActive(false);
@@ -43,8 +48,9 @@ public class CursorLock : MonoBehaviour
         Toolbelt.SetActive(false);
         ToolbeltOnScreen.SetActive(true);
         miniMap.SetActive(true);
-        questBG.SetActive(false);
+        questBG.SetActive(true);
         weatherBG.SetActive(true);
+        buildingCanvas.SetActive(true);
     }
 
     void Update()
@@ -70,6 +76,7 @@ public class CursorLock : MonoBehaviour
                 miniMapIsClosed = true;
                 questBGIsClosed = true;
                 weatherBGIsClosed = true;
+
 
                 //Alpha deðiþikliði
                 Color tmp = Inventory.GetComponent<Image>().color;
@@ -106,6 +113,19 @@ public class CursorLock : MonoBehaviour
             {
                 questBG.SetActive(false);
                 questBGIsClosed = true;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (buildingPanelIsClosed && inventoryIsClosed == true)
+            {
+                buildingCanvas.SetActive(true);
+                buildingPanelIsClosed = false;
+            }
+            else if(!buildingPanelIsClosed )
+            {
+                buildingCanvas.SetActive(false);
+                buildingPanelIsClosed = true;
             }
         }
        }
