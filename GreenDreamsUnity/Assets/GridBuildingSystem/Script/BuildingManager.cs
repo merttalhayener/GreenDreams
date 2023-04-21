@@ -1,12 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using static Unity.VisualScripting.Metadata;
 
 public class BuildingManager : MonoBehaviour
 {
+    [SerializeField] AudioClip placedSound;
+    [SerializeField] AudioSource source;
+
     public CheckPlacement checkPlacement;
     [SerializeField] Terrain gridTerrain;
     public GameObject[] objects;
@@ -54,15 +55,11 @@ public class BuildingManager : MonoBehaviour
         if (pendingObject != null)
         {
             gridTerrain.enabled = true;
+
             if (gridOn)
             {
                 Vector3 targetPos = new Vector3(RoundToNearestGrid(pos.x), (pos.y), RoundToNearestGrid(pos.z));
                 pendingObject.transform.position =  Vector3.Lerp(pendingObject.transform.position, targetPos , Time.deltaTime *30f);
-            }
-
-            else
-            {
-            pendingObject.transform.position = pos;
             }
 
             if (Input.GetMouseButtonDown(0) && canPlace && !IsMouseOverUI())
@@ -126,7 +123,8 @@ public class BuildingManager : MonoBehaviour
         CreateParticleEffect();
 
         pendingObject = null;
-        
+        source.PlayOneShot(placedSound, 0.3f);
+
     }
 
     IEnumerator RotateSmooth(Vector3 byAngles, float inTime)

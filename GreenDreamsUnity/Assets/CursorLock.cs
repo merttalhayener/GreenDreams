@@ -9,11 +9,15 @@ public class CursorLock : MonoBehaviour
     public GameObject Equipment;
     public GameObject ToolbeltOnScreen;
     public GameObject Toolbelt;
+    public GameObject buildingCanvas;
     public bool inventoryIsClosed;
     public bool equipmentIsClosed;
     public bool toolbeltOnScreenIsClosed;
     public bool toolbeltIsClosed;
 
+
+    [SerializeField] private AudioClip inventoryOpenSound;
+    [SerializeField] private AudioSource source;
    
     void Start()
     {
@@ -38,10 +42,12 @@ public class CursorLock : MonoBehaviour
             if (inventoryIsClosed & equipmentIsClosed == true &toolbeltIsClosed ==true && toolbeltOnScreenIsClosed == false)
             {
                 Debug.Log("bastý");
+                source.PlayOneShot(inventoryOpenSound, 0.3f);
                 Inventory.SetActive(true);
                 Equipment.SetActive(true);
                 Toolbelt.SetActive(true);
                 ToolbeltOnScreen.SetActive(false);
+                buildingCanvas.SetActive(false);
                 inventoryIsClosed = false;
                 equipmentIsClosed = false;
                 toolbeltIsClosed = false;
@@ -54,11 +60,13 @@ public class CursorLock : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("bidaha bastý");
+                source.PlayOneShot(inventoryOpenSound, 0.3f);
                 Inventory.SetActive(false);
                 Equipment.SetActive(false);
                 Toolbelt.SetActive(false);
                 ToolbeltOnScreen.SetActive(true);
+                buildingCanvas.SetActive(true);
                 inventoryIsClosed = true;
                 equipmentIsClosed = true;
                 toolbeltIsClosed = true;

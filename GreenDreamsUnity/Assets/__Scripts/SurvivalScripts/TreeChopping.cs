@@ -17,7 +17,6 @@ public class TreeChopping : MonoBehaviour
     public Vector3 distanceToTree;
 
     public AudioClip choppingClip;
-   
     public AudioSource source;
 
     private void Start()

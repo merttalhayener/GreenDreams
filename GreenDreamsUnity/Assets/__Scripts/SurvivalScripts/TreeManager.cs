@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Recorder;
 using UnityEngine;
 
 public class TreeManager : MonoBehaviour

@@ -20,9 +20,9 @@ public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver
     public void OnBeforeSerialize()
     {
         GetComponentInChildren<MeshFilter>().mesh = item.groundItem.GetComponent<MeshFilter>().sharedMesh;
-        EditorUtility.SetDirty(GetComponentInChildren<MeshFilter>());
+        
         GetComponentInChildren<MeshRenderer>().material = item.groundItem.GetComponent<MeshRenderer>().sharedMaterial;
-        EditorUtility.SetDirty(GetComponentInChildren<MeshRenderer>());
+      
 
     }
 }
