@@ -6,8 +6,8 @@ public class RotatingCamera : MonoBehaviour
     public GameObject PlayerFollowCamera;
     private Vector3 _cameraOffset;
     
-    [Range(0.01f, 1.0f)]
-    public float SmoothFactor = 0.5f;
+    [Range(0.01f, 100.0f)]
+    public float SmoothFactor ;
 
     public bool LookAtPlayer = false;
     public bool RotateAroundPlayer = true;
