@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3138529871954179027}
   - component: {fileID: 5768617163741402167}
   - component: {fileID: 3531809997998285849}
+  - component: {fileID: -8000370955902086789}
   m_Layer: 7
   m_Name: duvar
   m_TagString: Objects
@@ -102,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
+  buildingTypeManager: {fileID: 0}
+  buildingType: 0
   rb: {fileID: 5768617163741402167}
   groundLayer:
     serializedVersion: 2
@@ -136,6 +139,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5878906, y: 1.5459754, z: 0.08695569}
   m_Center: {x: -0.00076675415, y: 0.98834264, z: 0.05270187}
+--- !u!114 &-8000370955902086789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185572622723157924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 0}
+  buildingType: {fileID: 11400000, guid: e82fb54fe014e8744960224e36eea729, type: 2}
 --- !u!1 &5206178749230374988
 GameObject:
   m_ObjectHideFlags: 0
