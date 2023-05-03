@@ -8,9 +8,12 @@ public class CheckPlacement : MonoBehaviour
 
     [SerializeField]private ObjectTypeManager buildingTypeManager;
     [SerializeField] private ObjectTypeManager otherBuildingTypeManager;
+    [SerializeField] public List<BuildingTypes> buildingAllowedType;
 
     public BuildingTypes buildingType;
     public BuildingTypes otherBuildingType;
+
+  
     
 
     private Collider mainCollider;
@@ -28,7 +31,8 @@ public class CheckPlacement : MonoBehaviour
 
         buildingTypeManager = GetComponent<ObjectTypeManager>();
         buildingType = buildingTypeManager.buildingType.type;
-
+        
+        
     }
 
     private void FixedUpdate()
@@ -48,25 +52,41 @@ public class CheckPlacement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if ( other.gameObject.CompareTag("Objects")  && isPlaced ==false)
+        if( isPlaced == false)
         {
-            otherBuildingTypeManager = other.GetComponent<ObjectTypeManager>();
-            otherBuildingType = otherBuildingTypeManager.buildingType.type;
-          
-            Debug.Log( "Building Type : " +  buildingType);
-            Debug.Log("Collide With : " + otherBuildingType);
+           // Debug.Log("Çalýþýyor" + this.gameObject.name);
+            if (other.gameObject.CompareTag("Objects") && other !=null)
+            {
+               
+                buildingManager.canPlace = false;
 
+                otherBuildingTypeManager = other.GetComponent<ObjectTypeManager>();
+                otherBuildingType = otherBuildingTypeManager.buildingType.type;
+                buildingAllowedType = buildingTypeManager.allowedType;
 
-            buildingManager.canPlace = false;
+                for (int i = 0;  i< buildingAllowedType.Count; i++)
+                {
+                    if (buildingType == buildingAllowedType[i])
+                    {
+                        
+                        buildingManager.canPlace = true;
+                    }
+                    else
+                    {
+                       
+                        buildingManager.canPlace = false;
+                    }
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if ( other.gameObject.CompareTag("Objects")  && isPlaced == false)
+        if (other.gameObject.CompareTag("Objects"))
         {
-            otherBuildingTypeManager = null;
             buildingManager.canPlace = true;
+            otherBuildingTypeManager = null;
         }
     }
 
@@ -87,6 +107,8 @@ public class CheckPlacement : MonoBehaviour
         mainCollider.isTrigger = true;
 
         Transform[] allChildren =  GetComponentsInChildren<Transform>();
+
+
         foreach (Transform child in allChildren)
         {
             if (child != allChildren[0]&& child.gameObject.tag == "Spots")
@@ -110,4 +132,5 @@ public class CheckPlacement : MonoBehaviour
             }
         }
     }
+  
 }

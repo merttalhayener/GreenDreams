@@ -5,7 +5,7 @@ using UnityEngine;
     public enum BuildingTypes
     {
        Ground,
-       Wall,
+       Walls,
        PlaceableOnGround
     }
 

@@ -103,8 +103,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
-  buildingTypeManager: {fileID: 0}
-  buildingType: 0
+  buildingTypeManager: {fileID: -8000370955902086789}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 0000000001000000
+  buildingType: 1
+  otherBuildingType: 0
+  testSprite: {fileID: 21300000, guid: 0c38e52792b429344b661dd9e5a25288, type: 3}
   rb: {fileID: 5768617163741402167}
   groundLayer:
     serializedVersion: 2
@@ -152,7 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: {fileID: 0}
-  buildingType: {fileID: 11400000, guid: e82fb54fe014e8744960224e36eea729, type: 2}
+  buildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
+  allowedType: 0000000001000000
 --- !u!1 &5206178749230374988
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6004202324764874076}
   - component: {fileID: 8727140239256860430}
+  - component: {fileID: 2586578447654663376}
   m_Layer: 8
   m_Name: Spot1
   m_TagString: Spots
@@ -198,6 +204,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.012737036, z: 1}
   m_Center: {x: 0.008508682, y: 0.020190239, z: 0.013032854}
+--- !u!114 &2586578447654663376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206178749230374988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f1c20f07369d14baa3e88457551e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBuilding: {fileID: 1185572622723157924}
+  buildingManager: {fileID: 0}
+  parentTypeManager: {fileID: 0}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 
+  buildingType: 1
+  otherBuildingType: 0
+  isPlaced: 0
 --- !u!1 &5709913689089868439
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8706509728037944428}
   - component: {fileID: 6319067864166741477}
+  - component: {fileID: 7613392835693882863}
   m_Layer: 8
   m_Name: Spot1 (1)
   m_TagString: Spots
@@ -243,6 +270,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.012737036, z: 0.5}
   m_Center: {x: 0.010873795, y: 0.020190239, z: 0.013032854}
+--- !u!114 &7613392835693882863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709913689089868439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f1c20f07369d14baa3e88457551e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBuilding: {fileID: 1185572622723157924}
+  buildingManager: {fileID: 0}
+  parentTypeManager: {fileID: 0}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 
+  buildingType: 1
+  otherBuildingType: 0
+  isPlaced: 0
 --- !u!1 &7786148697622803006
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1450694680987529868}
   - component: {fileID: 5937651265284338349}
+  - component: {fileID: 6870191635835443786}
   m_Layer: 8
   m_Name: Spot1 (2)
   m_TagString: Spots
@@ -288,3 +336,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.012737036, z: 0.5}
   m_Center: {x: 0.005962372, y: 0.020190239, z: 0.013032854}
+--- !u!114 &6870191635835443786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786148697622803006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f1c20f07369d14baa3e88457551e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBuilding: {fileID: 1185572622723157924}
+  buildingManager: {fileID: 0}
+  parentTypeManager: {fileID: 0}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 
+  buildingType: 1
+  otherBuildingType: 0
+  isPlaced: 0
