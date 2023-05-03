@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8408388820892581372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.369, y: 0, z: 6}
+  m_LocalPosition: {x: 46.226, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -162,6 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
+  buildingTypeManager: {fileID: 0}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 
+  buildingType: 0
+  otherBuildingType: 0
   rb: {fileID: 2835702755199425115}
   groundLayer:
     serializedVersion: 2
@@ -210,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8408388820977029934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.531, y: 0.948, z: 0.036}
+  m_LocalPosition: {x: 0.519, y: 0.948, z: 0.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,8 +335,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8445129, y: 1.6637805, z: 0.047806025}
-  m_Center: {x: -0.51062775, y: 0.091310054, z: 0.027456641}
+  m_Size: {x: 0.96931076, y: 1.5488412, z: 0.047806025}
+  m_Center: {x: -0.551939, y: -0.010858059, z: 0.027456641}
 --- !u!114 &1875760036
 MonoBehaviour:
   m_ObjectHideFlags: 0

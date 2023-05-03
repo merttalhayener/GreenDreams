@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ground", menuName = "BuildingObjects/Type/Ground")]
 public class Ground : BuildingType
 {
-    public BuildingTypes[] PlaceableTypes;
+  //  public BuildingTypes[] PlaceableTypes;
 
     public void Awake()
     {

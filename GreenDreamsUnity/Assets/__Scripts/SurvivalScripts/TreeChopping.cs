@@ -49,7 +49,11 @@ public class TreeChopping : MonoBehaviour
         if (typeManager.objectType.type.ToString() == "Tree" && selector.distance <= 1.5f)
         {
             transform.LookAt(selector.selectedObject.transform.position);
-            animator.SetTrigger("ChopTree");
+         
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("TreeChopHorizontal"))
+            {
+                animator.SetTrigger("ChopTree");
+            }
 
         }
     }

@@ -3,7 +3,12 @@ guid: e59b3402073e4db47832a2e758cfebe1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buildingManager: {instanceID: 0}
+  - buildingTypeManager: {instanceID: 0}
+  - otherBuildingTypeManager: {instanceID: 0}
+  - testSprite: {fileID: 21300000, guid: 93711c309a149594f80e0f90805d6dae, type: 3}
+  - rb: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

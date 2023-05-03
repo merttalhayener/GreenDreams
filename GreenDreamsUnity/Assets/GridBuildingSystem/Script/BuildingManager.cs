@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
+    [SerializeField] GameObject player;
+    [SerializeField] Animator playerAnimator;
+
     [SerializeField] AudioClip placedSound;
     [SerializeField] AudioSource source;
 
@@ -36,6 +39,12 @@ public class BuildingManager : MonoBehaviour
     
 
     public float maxSlopeAngle = 30f; // inþaat yapýlacak maksimum eðim açýsý
+
+    private void Start()
+    {
+        playerAnimator = player.GetComponent<Animator>();
+    }
+
 
     private void FixedUpdate()
     {
@@ -122,6 +131,12 @@ public class BuildingManager : MonoBehaviour
 
         CreateParticleEffect();
 
+        // player.transform.LookAt(pendingObject.transform.position , Vector3.up);
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("BuildWithHammer"))
+        {
+            playerAnimator.SetTrigger("Build");
+        }
+        
         pendingObject = null;
         source.PlayOneShot(placedSound, 0.3f);
 
