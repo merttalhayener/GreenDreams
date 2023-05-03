@@ -48,8 +48,8 @@ public class ClockManager : MonoBehaviour
         float newRotation = Mathf.Lerp(0, 360, t);
         ClockFace.localEulerAngles = new Vector3(0, 0, newRotation + startingRotation);
 
-        float dayNighT = dayNightCurve.Evaluate(t);
+        //float dayNighT = dayNightCurve.Evaluate(t);
 
-        sunLight.intensity = Mathf.Lerp( dayIntensity, nightIntensity, dayNighT);
+        //sunLight.intensity = Mathf.Lerp( dayIntensity, nightIntensity, dayNighT);
     }
 }

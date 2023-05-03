@@ -10,7 +10,7 @@ namespace Dputils.Systems.DateTime
         public int dateInMonth;
         [Range(1, 4)]
         public int season;
-        [Range(1, 99)]
+        [Range(2023,float.PositiveInfinity)]
         public int year;
         [Range(0, 24)]
         public int hour;
@@ -147,9 +147,7 @@ namespace Dputils.Systems.DateTime
                 totalNumWeeks++;
             }
 
-            day++;
-
-
+            
             date++;
 
             if (date % 29 == 0)
@@ -283,7 +281,7 @@ namespace Dputils.Systems.DateTime
             
     [System.Serializable]
     public enum Days
-             {
+    {
             NULL = 0,
             Mon = 1,
             Tue = 2,
@@ -292,15 +290,15 @@ namespace Dputils.Systems.DateTime
             Fri = 5,
             Sat = 6,
             Sun = 7
-            }
+    }
     [System.Serializable]
     public enum Season
-            {
-            Spring = 0,
-            Summer = 1,
-            Autumn = 2,
-            Winter = 3
-            }
+    {
+     Spring = 0,
+     Summer = 1,
+     Autumn = 2,
+     Winter = 3
+    }
         
         
 

@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
             inventory.Load();
             equipment.Load();
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             reset.ResetTheGame();
         }
