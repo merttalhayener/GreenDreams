@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dputils.Systems.DateTime;
 
 [ExecuteAlways]
 public class LightingManager : MonoBehaviour
@@ -9,23 +10,48 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private LightingPreset Preset;
     [SerializeField, Range(0, 24)] private float TimeOfDay;
 
+    [SerializeField, Range(0, 24)] private float hour;
+    [SerializeField, Range(0, 60)] private float minute;
+
+    [SerializeField] private DateTime dateTime;
+
+
+    private void UpdateDateTime(DateTime dateTime)
+    {
+        
+        hour = (float)dateTime.Hour;
+        minute = (float)dateTime.Minutes;
+
+        float saatDakika = hour + (minute / 60f);
+        TimeOfDay = saatDakika;
+       
+       
+        
+    }
+    private void OnEnable()
+    {
+        TimeManager.OnDateTimeChanged += UpdateDateTime;
+    }
+    private void OnDisable()
+    {
+        TimeManager.OnDateTimeChanged -= UpdateDateTime;
+    }
+
 
     private void Update()
     {
+        
+        
         if (Preset == null)
             return;
 
         if (Application.isPlaying)
         {
-            //TimeOfDay = 14;
-            TimeOfDay += (Time.deltaTime) / 4f;   
-            TimeOfDay %= 24;
-            UpdateLighting(TimeOfDay / 24f);
-            Debug.Log(TimeOfDay/24f);
+            UpdateLighting(TimeOfDay/24f);
         }
         else
         {
-            UpdateLighting(TimeOfDay / 24f);
+            UpdateLighting(TimeOfDay/24f);
         }
     }
 

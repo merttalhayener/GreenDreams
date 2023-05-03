@@ -11,9 +11,13 @@ public class CursorLock : MonoBehaviour
     public GameObject Toolbelt;
     public GameObject buildingCanvas;
     public GameObject questBG;
+    public GameObject questPersonIMG;
     public GameObject miniMap;
     public GameObject weatherBG;
     
+
+
+    public int activeChildIndex = 1;
 
     public bool inventoryIsClosed;
     public bool equipmentIsClosed;
@@ -49,6 +53,7 @@ public class CursorLock : MonoBehaviour
         ToolbeltOnScreen.SetActive(true);
         miniMap.SetActive(true);
         questBG.SetActive(true);
+        questPersonIMG.SetActive(true);
         weatherBG.SetActive(true);
         buildingCanvas.SetActive(true);
     }
@@ -67,6 +72,7 @@ public class CursorLock : MonoBehaviour
                 ToolbeltOnScreen.SetActive(false);
                 miniMap.SetActive(false);
                 questBG.SetActive(false);
+                questPersonIMG.SetActive(false);
                 weatherBG.SetActive(false);
                 buildingCanvas.SetActive(false);
                 inventoryIsClosed = false;
@@ -107,11 +113,14 @@ public class CursorLock : MonoBehaviour
             if (questBGIsClosed == true && inventoryIsClosed == true)
             {
                 questBG.SetActive(true);
+                questPersonIMG.SetActive(true);
                 questBGIsClosed = false;
+
             }
             else if (questBGIsClosed == false)
             {
                 questBG.SetActive(false);
+                questPersonIMG.SetActive(true);
                 questBGIsClosed = true;
             }
         }
@@ -128,5 +137,8 @@ public class CursorLock : MonoBehaviour
                 buildingPanelIsClosed = true;
             }
         }
-       }
+
+       
     }
+    
+}
