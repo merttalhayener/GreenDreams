@@ -12,7 +12,7 @@ public class SpotPlacement : MonoBehaviour
     [SerializeField] private ObjectTypeManager otherBuildingTypeManager;
     [SerializeField] public List<BuildingTypes> buildingAllowedType;
 
-    public BuildingTypes buildingType;
+    public BuildingTypes parentbuildingType;
     public BuildingTypes otherBuildingType;
 
     public bool isPlaced;
@@ -22,8 +22,9 @@ public class SpotPlacement : MonoBehaviour
         isPlaced = false;
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
 
-        parentTypeManager =parentBuilding.GetComponent<ObjectTypeManager>();
-        buildingType = parentTypeManager.buildingType.type;
+        parentTypeManager =parentBuilding.gameObject.GetComponent<ObjectTypeManager>();
+        parentbuildingType = parentTypeManager.buildingType.type;
+        buildingAllowedType = parentTypeManager.allowedType;
     }
 
    
@@ -31,21 +32,17 @@ public class SpotPlacement : MonoBehaviour
     {
         if (isPlaced == false)
         {
-            if (other.gameObject.CompareTag("Objects") && other != null)
+            if (other.gameObject.CompareTag("Objects") && other.gameObject != null)
             {
-                //Debug.Log("Other : " + other.gameObject.name);
-                buildingManager.canPlace = false;
-
                 otherBuildingTypeManager = other.GetComponent<ObjectTypeManager>();
                 otherBuildingType = otherBuildingTypeManager.buildingType.type;
-                buildingAllowedType = parentTypeManager.allowedType;
+                
 
-                Debug.Log("Building Type : " + buildingType);
-                Debug.Log("Collide With : " + otherBuildingType);
+                
 
                 for (int i = 0; i < buildingAllowedType.Count; i++)
                 {
-                    if (buildingType == buildingAllowedType[i])
+                    if (otherBuildingType == buildingAllowedType[i])
                     {
                         Debug.Log("You can build here");
                         buildingManager.canPlace = true;
@@ -57,6 +54,10 @@ public class SpotPlacement : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+            return;
         }
     }
 }

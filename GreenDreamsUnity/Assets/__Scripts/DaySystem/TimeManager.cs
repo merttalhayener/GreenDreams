@@ -300,6 +300,4 @@ namespace Dputils.Systems.DateTime
      Winter = 3
     }
         
-        
-
 }

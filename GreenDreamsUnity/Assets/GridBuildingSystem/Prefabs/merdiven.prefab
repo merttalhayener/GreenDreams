@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7929391253353376006}
   - component: {fileID: -6365404391335106683}
   - component: {fileID: 2163474656876101907}
+  - component: {fileID: 862715709715181056}
   m_Layer: 7
   m_Name: merdiven
   m_TagString: Objects
@@ -100,6 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
+  buildingTypeManager: {fileID: 862715709715181056}
+  buildingAllowedType: 
+  buildingType: 0
+  otherBuildingType: 0
   rb: {fileID: -6365404391335106683}
   groundLayer:
     serializedVersion: 2
@@ -132,8 +137,23 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.74790573, y: 0.8131527, z: 0.79535675}
-  m_Center: {x: 0.498518, y: 0.5044492, z: 0.4955511}
+  m_Size: {x: 0.84373856, y: 1.0005696, z: 0.9314636}
+  m_Center: {x: 0.49167442, y: 0.41074073, z: 0.50125855}
+--- !u!114 &862715709715181056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009245190186512946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 0}
+  buildingType: {fileID: 11400000, guid: 251ec5e528dbc1f4483b94bd49eda121, type: 2}
+  allowedType: 
 --- !u!1 &9052154530083152304
 GameObject:
   m_ObjectHideFlags: 0

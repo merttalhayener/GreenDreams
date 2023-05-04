@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
-  buildingTypeManager: {fileID: 0}
-  otherBuildingTypeManager: {fileID: 0}
-  buildingAllowedType: 00000000
+  buildingTypeManager: {fileID: 1778967683647557797}
+  buildingAllowedType: 
   buildingType: 2
   otherBuildingType: 0
   rb: {fileID: 1161214326348616466}
@@ -153,4 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectType: {fileID: 0}
   buildingType: {fileID: 11400000, guid: 251ec5e528dbc1f4483b94bd49eda121, type: 2}
-  allowedType: 00000000
+  allowedType: 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 201443338105392275}
   - component: {fileID: 6784289753471854748}
   - component: {fileID: 2706862504737035844}
+  - component: {fileID: 2669477173223794404}
   m_Layer: 7
   m_Name: Pencereli
   m_TagString: Objects
@@ -102,6 +103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
+  buildingTypeManager: {fileID: 2669477173223794404}
+  otherBuildingTypeManager: {fileID: 0}
+  buildingAllowedType: 
+  buildingType: 0
+  otherBuildingType: 0
   rb: {fileID: 6784289753471854748}
   groundLayer:
     serializedVersion: 2
@@ -136,6 +142,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6068192, y: 1.5146035, z: 0.10098437}
   m_Center: {x: 0.0036087036, y: 0.9801741, z: 0.050492387}
+--- !u!114 &2669477173223794404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325678262074068333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 0}
+  buildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
+  allowedType: 
 --- !u!1 &4361618249688362143
 GameObject:
   m_ObjectHideFlags: 0

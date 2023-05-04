@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5195480998897613278}
   - component: {fileID: 178455403679257745}
-  - component: {fileID: 7755043942538180707}
   m_Layer: 8
   m_Name: Spot
   m_TagString: Spots
@@ -46,26 +45,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9885432, y: 0.008441687, z: 1.982518}
   m_Center: {x: 0.00128299, y: 0.11441058, z: -0.005769849}
---- !u!114 &7755043942538180707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452532156480597228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f1c20f07369d14baa3e88457551e5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBuilding: {fileID: 7765349597782532437}
-  buildingManager: {fileID: 0}
-  parentTypeManager: {fileID: 0}
-  otherBuildingTypeManager: {fileID: 0}
-  buildingAllowedType: 
-  buildingType: 0
-  otherBuildingType: 0
-  isPlaced: 0
 --- !u!1 &7765349597782532437
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,12 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
-  buildingTypeManager: {fileID: 0}
-  otherBuildingTypeManager: {fileID: 0}
-  buildingAllowedType: 01000000
+  buildingTypeManager: {fileID: 2566469949074925462}
+  buildingAllowedType: 
   buildingType: 0
   otherBuildingType: 0
-  testSprite: {fileID: 21300000, guid: 0c38e52792b429344b661dd9e5a25288, type: 3}
   rb: {fileID: 1939396277030103139}
   groundLayer:
     serializedVersion: 2
@@ -221,4 +198,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectType: {fileID: 0}
   buildingType: {fileID: 11400000, guid: 60fe41848a9824f4880977113af84ad9, type: 2}
-  allowedType: 01000000
+  allowedType: 

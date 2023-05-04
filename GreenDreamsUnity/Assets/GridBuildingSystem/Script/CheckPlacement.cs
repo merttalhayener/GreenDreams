@@ -5,11 +5,11 @@ using UnityEngine;
 public class CheckPlacement : MonoBehaviour
 {
     [SerializeField] private BuildingManager buildingManager;
-
     [SerializeField]private ObjectTypeManager buildingTypeManager;
-    [SerializeField] private ObjectTypeManager otherBuildingTypeManager;
     [SerializeField] public List<BuildingTypes> buildingAllowedType;
 
+
+    private ObjectTypeManager otherBuildingTypeManager;
     public BuildingTypes buildingType;
     public BuildingTypes otherBuildingType;
 
@@ -23,16 +23,19 @@ public class CheckPlacement : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     public bool isPlaced;
+   
     
     void Start()
     {
         isPlaced = false;
-        buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
+       
 
+        buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
         buildingTypeManager = GetComponent<ObjectTypeManager>();
         buildingType = buildingTypeManager.buildingType.type;
-        
-        
+        buildingAllowedType = buildingTypeManager.buildingType.allowedType;
+
+
     }
 
     private void FixedUpdate()
@@ -54,30 +57,45 @@ public class CheckPlacement : MonoBehaviour
     {
         if( isPlaced == false)
         {
-           // Debug.Log("Çalýþýyor" + this.gameObject.name);
-            if (other.gameObject.CompareTag("Objects") && other !=null)
+           
+            if (other.gameObject.CompareTag("Objects") && other.gameObject !=null)
             {
-               
-                buildingManager.canPlace = false;
-
-                otherBuildingTypeManager = other.GetComponent<ObjectTypeManager>();
+                otherBuildingTypeManager = other.gameObject.GetComponent<ObjectTypeManager>();
                 otherBuildingType = otherBuildingTypeManager.buildingType.type;
-                buildingAllowedType = buildingTypeManager.allowedType;
 
-                for (int i = 0;  i< buildingAllowedType.Count; i++)
+               
+                if (buildingAllowedType.Contains(otherBuildingType))
                 {
-                    if (buildingType == buildingAllowedType[i])
-                    {
-                        
+                        Debug.Log("Listede Var:  " + otherBuildingType);
                         buildingManager.canPlace = true;
-                    }
-                    else
-                    {
-                       
-                        buildingManager.canPlace = false;
-                    }
+                }
+                else
+                {
+                    buildingManager.canPlace = false;
+                }
+               
+            }
+
+            else if (other.gameObject.CompareTag("Spots") && other.gameObject != null)
+            {
+                otherBuildingTypeManager = other.gameObject.GetComponentInParent<ObjectTypeManager>();
+                otherBuildingType = otherBuildingTypeManager.buildingType.type;
+
+                if (buildingAllowedType.Contains(otherBuildingType))
+                {
+                   
+                    buildingManager.canPlace = true;
+                }
+                else
+                {
+                    buildingManager.canPlace = false;
                 }
             }
+        }
+        else
+        {
+           
+            return;
         }
     }
 

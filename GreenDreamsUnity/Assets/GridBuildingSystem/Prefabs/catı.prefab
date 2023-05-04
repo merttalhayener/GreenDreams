@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6431833599613646131}
   - component: {fileID: 5328640796328773630}
   - component: {fileID: 4072034499473957528}
+  - component: {fileID: 7814174184279897628}
   m_Layer: 7
   m_Name: "cat\u0131"
   m_TagString: Objects
@@ -99,8 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
-  buildingTypeManager: {fileID: 0}
-  otherBuildingTypeManager: {fileID: 0}
+  buildingTypeManager: {fileID: 7814174184279897628}
   buildingAllowedType: 
   buildingType: 0
   otherBuildingType: 0
@@ -136,5 +136,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.58741, y: 1.0849676, z: 1.315628}
-  m_Center: {x: -0.99876785, y: 0.7592616, z: -0.66821}
+  m_Size: {x: 1.9323273, y: 1.4237332, z: 1.4080185}
+  m_Center: {x: -0.99877167, y: 0.58987945, z: -0.70670605}
+--- !u!114 &7814174184279897628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7210578069567941755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 0}
+  buildingType: {fileID: 11400000, guid: 251ec5e528dbc1f4483b94bd49eda121, type: 2}
+  allowedType: 

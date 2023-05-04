@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 2835702755199425115}
   - component: {fileID: 2302626954613618866}
   - component: {fileID: 5254698376360043371}
+  - component: {fileID: 2066452410950742438}
   m_Layer: 7
   m_Name: "kap\u0131"
   m_TagString: Objects
@@ -163,7 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingManager: {fileID: 0}
   buildingTypeManager: {fileID: 0}
-  otherBuildingTypeManager: {fileID: 0}
   buildingAllowedType: 
   buildingType: 0
   otherBuildingType: 0
@@ -185,6 +185,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5328865, y: 0.87321764, z: 0.100000024}
   m_Center: {x: 0.0028476715, y: 1.0915139, z: 0.06420928}
+--- !u!114 &2066452410950742438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408388820892581372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 0}
+  buildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
+  allowedType: 
 --- !u!1 &8408388820977029934
 GameObject:
   m_ObjectHideFlags: 0
