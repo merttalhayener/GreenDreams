@@ -15,7 +15,9 @@ public class LightingManager : MonoBehaviour
 
     [SerializeField] private DateTime dateTime;
 
-
+    //public float rotationSpeed = 1.0f;
+    //public float startRotation = 0f;
+    //public float endRotation = 360f;
     private void UpdateDateTime(DateTime dateTime)
     {
         
@@ -23,11 +25,9 @@ public class LightingManager : MonoBehaviour
         minute = (float)dateTime.Minutes;
 
         float saatDakika = hour + (minute / 60f);
-        TimeOfDay = saatDakika;
-       
-       
-        
+        TimeOfDay = saatDakika;       
     }
+
     private void OnEnable()
     {
         TimeManager.OnDateTimeChanged += UpdateDateTime;
@@ -55,18 +55,20 @@ public class LightingManager : MonoBehaviour
         }
     }
 
-
-
-
     private void UpdateLighting(float timePercent)
     {
-        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
-        RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
+        //RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
+        //RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
 
         if (DirectionalLight != null)
         {
-            DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
+            //DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
             DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170,0));
+
+            //float innerTimePercent = Time.time % rotationSpeed / rotationSpeed;
+            //Quaternion startQuaternion = Quaternion.Euler(new Vector3(startRotation, 170, 0));
+            //Quaternion endQuaternion = Quaternion.Euler(new Vector3(endRotation, 170, 0));
+            //DirectionalLight.transform.localRotation = Quaternion.Lerp(startQuaternion, endQuaternion, timePercent);
         }
     }
 
@@ -90,8 +92,5 @@ public class LightingManager : MonoBehaviour
                 }
             }
         }
-        
-
-        
     }
 }

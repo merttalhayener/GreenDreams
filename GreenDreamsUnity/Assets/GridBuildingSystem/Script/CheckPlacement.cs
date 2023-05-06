@@ -58,7 +58,23 @@ public class CheckPlacement : MonoBehaviour
         if( isPlaced == false)
         {
            
-            if (other.gameObject.CompareTag("Objects") && other.gameObject !=null)
+             if (other.gameObject.CompareTag("Spots") && other.gameObject != null)
+            {
+                otherBuildingTypeManager = other.gameObject.GetComponentInParent<ObjectTypeManager>();
+                otherBuildingType = otherBuildingTypeManager.buildingType.type;
+
+                if (buildingAllowedType.Contains(otherBuildingType))
+                {
+                   
+                    buildingManager.canPlace = true;
+                    Debug.Log("Listede Var:  " + otherBuildingType);
+                }
+                else
+                {
+                    buildingManager.canPlace = false;
+                }
+            }
+            else if (other.gameObject.CompareTag("Objects") && other.gameObject !=null)
             {
                 otherBuildingTypeManager = other.gameObject.GetComponent<ObjectTypeManager>();
                 otherBuildingType = otherBuildingTypeManager.buildingType.type;
@@ -76,21 +92,6 @@ public class CheckPlacement : MonoBehaviour
                
             }
 
-            else if (other.gameObject.CompareTag("Spots") && other.gameObject != null)
-            {
-                otherBuildingTypeManager = other.gameObject.GetComponentInParent<ObjectTypeManager>();
-                otherBuildingType = otherBuildingTypeManager.buildingType.type;
-
-                if (buildingAllowedType.Contains(otherBuildingType))
-                {
-                   
-                    buildingManager.canPlace = true;
-                }
-                else
-                {
-                    buildingManager.canPlace = false;
-                }
-            }
         }
         else
         {
