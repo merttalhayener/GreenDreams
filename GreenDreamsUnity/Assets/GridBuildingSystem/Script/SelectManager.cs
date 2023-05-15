@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
 public class SelectManager : MonoBehaviour
 {
@@ -29,11 +30,12 @@ public class SelectManager : MonoBehaviour
            
             if (Physics.Raycast(ray,out hit , 1000 , buildingLayer))
             {
-             if (hit.collider.gameObject.CompareTag("Objects")&& buildingManager.pendingObject == null)
+             if (hit.collider.gameObject.CompareTag("Objects")&& buildingManager.pendingObject == null && !IsMouseOverUI())
              {
                     hit.collider.gameObject.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
                     Select(hit.collider.gameObject);
-             }
+                   
+                }
             }
         }
         if (Input.GetMouseButtonDown(1) && selectedObject!=null)
@@ -42,6 +44,10 @@ public class SelectManager : MonoBehaviour
         }
     }
 
+    private bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
     private void Select (GameObject obj)
     {
         if (obj==selectedObject)
@@ -69,6 +75,7 @@ public class SelectManager : MonoBehaviour
             objNameText.text = obj.name;
             objectUI.SetActive(true);
             selectedObject = obj;
+       
     }
 
     private void Deselect()
@@ -77,7 +84,8 @@ public class SelectManager : MonoBehaviour
         {
             objectUI.SetActive(false);
             selectedObject.GetComponent<Outline>().enabled = false;
-            selectedObject = null;
+            
+          
         }
     }
 

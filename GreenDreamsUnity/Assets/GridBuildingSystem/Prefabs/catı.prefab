@@ -102,7 +102,7 @@ MonoBehaviour:
   buildingManager: {fileID: 0}
   buildingTypeManager: {fileID: 7814174184279897628}
   buildingAllowedType: 
-  buildingType: 0
+  buildingType: 2
   otherBuildingType: 0
   rb: {fileID: 5328640796328773630}
   groundLayer:

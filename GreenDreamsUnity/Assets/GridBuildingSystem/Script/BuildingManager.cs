@@ -18,6 +18,7 @@ public class BuildingManager : MonoBehaviour
 
 
     public ParticleSystem childrenParticleSystem;
+    public CursorLock cursorLock;
    
 
     private Vector3 pos;
@@ -32,6 +33,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private Toggle gridToggle;
 
     public bool canPlace;
+    public bool buildingOpen;
     bool rotating;
     
 
@@ -74,6 +76,8 @@ public class BuildingManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canPlace && !IsMouseOverUI())
             {
                 PlaceObject();
+                buildingOpen = false;
+                MouseLock();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
@@ -91,6 +95,8 @@ public class BuildingManager : MonoBehaviour
         }
         else
         {
+            buildingOpen = false;
+            MouseLock();
             gridTerrain.enabled = false;
             canPlace = true;
         }
@@ -124,6 +130,7 @@ public class BuildingManager : MonoBehaviour
 
         //Materyal deðiþimleri
         materials = pendingObject.GetComponent<MeshRenderer>().materials;
+        
         foreach (var material in materials)
         {
             material.color = Color.white;
@@ -203,8 +210,24 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
+        buildingOpen = true;
+        MouseLock();
         Destroy (pendingObject);   
         pendingObject = Instantiate(objects[index], pos, objects[index].transform.rotation);
+    }
+
+    public void MouseLock()
+    {
+        if (buildingOpen)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else if (!buildingOpen && cursorLock.buildingPanelIsClosed == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     public void ToggleGrid()

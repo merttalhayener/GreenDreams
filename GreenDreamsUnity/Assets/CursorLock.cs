@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CursorLock : MonoBehaviour
 {
+
+    [SerializeField] BuildingManager buildingManager;
+
     public GameObject Inventory;
     public GameObject Equipment;
     public GameObject ToolbeltOnScreen;
@@ -34,8 +38,8 @@ public class CursorLock : MonoBehaviour
    
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
         inventoryIsClosed = true;
         equipmentIsClosed = true;
@@ -44,7 +48,7 @@ public class CursorLock : MonoBehaviour
         miniMapIsClosed = false;
         questBGIsClosed = false;
         weatherBGIsClosed = false;
-        buildingPanelIsClosed = false;
+        buildingPanelIsClosed = true;
 
 
         Inventory.SetActive(false);
@@ -55,7 +59,7 @@ public class CursorLock : MonoBehaviour
         questBG.SetActive(true);
         questPersonIMG.SetActive(true);
         weatherBG.SetActive(true);
-        buildingCanvas.SetActive(true);
+        buildingCanvas.SetActive(false);
     }
 
     void Update()
@@ -124,21 +128,23 @@ public class CursorLock : MonoBehaviour
                 questBGIsClosed = true;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.B))
+        else if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (buildingPanelIsClosed && inventoryIsClosed == true)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 buildingCanvas.SetActive(true);
                 buildingPanelIsClosed = false;
             }
             else if(!buildingPanelIsClosed )
             {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 buildingCanvas.SetActive(false);
                 buildingPanelIsClosed = true;
             }
         }
-
-       
     }
     
 }

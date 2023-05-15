@@ -15,7 +15,6 @@ MonoBehaviour:
   components:
   - {fileID: 114419383790821408}
   - {fileID: 114636031392424992}
-  - {fileID: 114676324298085600}
   - {fileID: 114243394074882346}
 --- !u!114 &114243394074882346
 MonoBehaviour:
@@ -36,54 +35,42 @@ MonoBehaviour:
   color:
     m_OverrideState: 0
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
+  tint:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
   density:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
+  maxFogDistance:
+    m_OverrideState: 0
+    m_Value: 5000
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
-    min: 0
-    max: 1
   mipFogNear:
     m_OverrideState: 0
     m_Value: 0
-    min: 0
   mipFogFar:
     m_OverrideState: 0
     m_Value: 1000
-    min: 0
   albedo:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
     m_Value: 300
-    min: 1
   baseHeight:
     m_OverrideState: 0
     m_Value: 0
-  meanHeight:
+  maximumHeight:
     m_OverrideState: 0
-    m_Value: 5
-    min: 1
+    m_Value: 10
   anisotropy:
     m_OverrideState: 1
     m_Value: 1
-    min: -1
-    max: 1
   globalLightProbeDimmer:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
   enableDistantFog:
     m_OverrideState: 1
     m_Value: 1
@@ -103,43 +90,33 @@ MonoBehaviour:
   maxShadowDistance:
     m_OverrideState: 1
     m_Value: 200
-    min: 0
+  directionalTransmissionMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
   cascadeShadowSplitCount:
     m_OverrideState: 1
     m_Value: 4
-    min: 1
-    max: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
     m_Value: 0.05
-    min: 0
-    max: 1
   cascadeShadowSplit1:
     m_OverrideState: 1
     m_Value: 0.15
-    min: 0
-    max: 1
   cascadeShadowSplit2:
     m_OverrideState: 1
     m_Value: 0.3
-    min: 0
-    max: 1
   cascadeShadowBorder0:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
   cascadeShadowBorder1:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
   cascadeShadowBorder2:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
   cascadeShadowBorder3:
     m_OverrideState: 1
     m_Value: 0
-    min: 0
 --- !u!114 &114636031392424992
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -156,6 +133,18 @@ MonoBehaviour:
   skyType:
     m_OverrideState: 1
     m_Value: 2
+  cloudType:
+    m_OverrideState: 0
+    m_Value: 0
+  skyAmbientMode:
+    m_OverrideState: 0
+    m_Value: 1
+  windOrientation:
+    m_OverrideState: 0
+    m_Value: 0
+  windSpeed:
+    m_OverrideState: 0
+    m_Value: 100
   fogType:
     m_OverrideState: 1
     m_Value: 3

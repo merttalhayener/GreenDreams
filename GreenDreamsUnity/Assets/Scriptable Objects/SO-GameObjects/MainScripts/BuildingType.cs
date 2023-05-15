@@ -6,7 +6,8 @@ using UnityEngine;
     {
        Ground,
        Walls,
-       PlaceableOnGround
+       PlaceableOnGround,
+       NULLObject
     }
 
     public class BuildingType : ScriptableObject

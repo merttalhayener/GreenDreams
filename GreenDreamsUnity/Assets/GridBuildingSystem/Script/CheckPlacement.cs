@@ -13,8 +13,8 @@ public class CheckPlacement : MonoBehaviour
     public BuildingTypes buildingType;
     public BuildingTypes otherBuildingType;
 
-  
-    
+
+    [SerializeField] GameObject directionArrow;
 
     private Collider mainCollider;
     private Collider meshCollider;
@@ -29,13 +29,10 @@ public class CheckPlacement : MonoBehaviour
     {
         isPlaced = false;
        
-
         buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
         buildingTypeManager = GetComponent<ObjectTypeManager>();
         buildingType = buildingTypeManager.buildingType.type;
         buildingAllowedType = buildingTypeManager.buildingType.allowedType;
-
-
     }
 
     private void FixedUpdate()
@@ -45,11 +42,20 @@ public class CheckPlacement : MonoBehaviour
         if (isPlaced==false)
         {
             DisableSlots();
+            if (directionArrow != null)
+            {
+              directionArrow.SetActive(true);
+            }
         }
 
         else
         {
-            EnableSlots();
+            EnableSlots(); 
+            if (directionArrow != null)
+            {
+                directionArrow.SetActive(false);
+            }
+            
         }
     }
 
@@ -57,8 +63,24 @@ public class CheckPlacement : MonoBehaviour
     {
         if( isPlaced == false)
         {
-           
-             if (other.gameObject.CompareTag("Spots") && other.gameObject != null)
+             if (other.gameObject.CompareTag("Objects") )
+             {
+                otherBuildingTypeManager = other.gameObject.GetComponent<ObjectTypeManager>();
+                otherBuildingType = otherBuildingTypeManager.buildingType.type;
+
+               
+                if (buildingAllowedType.Contains(otherBuildingType))
+                {
+                        Debug.Log("Listede Var:  " + otherBuildingType);
+                        buildingManager.canPlace = true;
+                }
+                else
+                {
+                    buildingManager.canPlace = false;
+                }
+             }
+
+            else if (other.gameObject.CompareTag("Spots") && otherBuildingTypeManager == null)
             {
                 otherBuildingTypeManager = other.gameObject.GetComponentInParent<ObjectTypeManager>();
                 otherBuildingType = otherBuildingTypeManager.buildingType.type;
@@ -74,28 +96,10 @@ public class CheckPlacement : MonoBehaviour
                     buildingManager.canPlace = false;
                 }
             }
-            else if (other.gameObject.CompareTag("Objects") && other.gameObject !=null)
-            {
-                otherBuildingTypeManager = other.gameObject.GetComponent<ObjectTypeManager>();
-                otherBuildingType = otherBuildingTypeManager.buildingType.type;
-
-               
-                if (buildingAllowedType.Contains(otherBuildingType))
-                {
-                        Debug.Log("Listede Var:  " + otherBuildingType);
-                        buildingManager.canPlace = true;
-                }
-                else
-                {
-                    buildingManager.canPlace = false;
-                }
-               
-            }
-
         }
         else
         {
-           
+            otherBuildingType = BuildingTypes.NULLObject;
             return;
         }
     }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Walls
   m_EditorClassIdentifier: 
   type: 1
-  allowedType: 0000000001000000
+  allowedType: 0100000000000000
