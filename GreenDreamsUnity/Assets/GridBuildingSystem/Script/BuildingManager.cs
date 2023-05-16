@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] Terrain gridTerrain;
     public GameObject[] objects;
     public GameObject pendingObject;
+    [SerializeField] private int lastIndex;
 
 
     public ParticleSystem childrenParticleSystem;
@@ -59,25 +61,28 @@ public class BuildingManager : MonoBehaviour
         {
             pos = hit.point;
         }
+        MouseLock();
     }
     
     void Update()
     {
         if (pendingObject != null)
         {
+
             gridTerrain.enabled = true;
+            buildingOpen = true;
 
             if (gridOn)
             {
                 Vector3 targetPos = new Vector3(RoundToNearestGrid(pos.x), (pos.y), RoundToNearestGrid(pos.z));
-                pendingObject.transform.position =  Vector3.Lerp(pendingObject.transform.position, targetPos , Time.deltaTime *30f);
+                pendingObject.transform.position =  Vector3.Lerp(pendingObject.transform.position, targetPos , Time.deltaTime *40f);
             }
 
             if (Input.GetMouseButtonDown(0) && canPlace && !IsMouseOverUI())
             {
                 PlaceObject();
                 buildingOpen = false;
-                MouseLock();
+               
             }
 
             if (Input.GetKeyDown(KeyCode.R))
@@ -93,10 +98,12 @@ public class BuildingManager : MonoBehaviour
             ChangeMaterials();
            
         }
+
         else
         {
             buildingOpen = false;
-            MouseLock();
+           
+            //MouseLock();
             gridTerrain.enabled = false;
             canPlace = true;
         }
@@ -146,7 +153,9 @@ public class BuildingManager : MonoBehaviour
         
         pendingObject = null;
         source.PlayOneShot(placedSound, 0.3f);
-
+        buildingOpen = false;
+        
+        SelectObject(lastIndex);
     }
 
     IEnumerator RotateSmooth(Vector3 byAngles, float inTime)
@@ -210,10 +219,13 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        buildingOpen = true;
-        MouseLock();
+        lastIndex=index;
+       
+       
+        
         Destroy (pendingObject);   
         pendingObject = Instantiate(objects[index], pos, objects[index].transform.rotation);
+        buildingOpen = true;
     }
 
     public void MouseLock()
