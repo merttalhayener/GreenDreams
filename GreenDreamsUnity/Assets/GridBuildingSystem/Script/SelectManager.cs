@@ -84,6 +84,7 @@ public class SelectManager : MonoBehaviour
         {
             objectUI.SetActive(false);
             selectedObject.GetComponent<Outline>().enabled = false;
+            selectedObject = null;
             
           
         }
