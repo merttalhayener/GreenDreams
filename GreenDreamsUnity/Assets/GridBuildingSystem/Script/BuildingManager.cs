@@ -221,8 +221,6 @@ public class BuildingManager : MonoBehaviour
     {
         lastIndex=index;
        
-       
-        
         Destroy (pendingObject);   
         pendingObject = Instantiate(objects[index], pos, objects[index].transform.rotation);
         buildingOpen = true;
@@ -268,7 +266,6 @@ public class BuildingManager : MonoBehaviour
         {
             pos -= gridSize;
         }
-       
         return pos;
     }
 }
