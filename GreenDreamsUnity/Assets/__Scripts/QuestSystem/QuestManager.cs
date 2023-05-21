@@ -101,10 +101,22 @@ public class QuestManager : MonoBehaviour
         {
             if (quest.wantedBuildingType == objectType) // Nesnenin türünü görevin türüyle kýyaslayýn
             {
-                Debug.Log("Quest Type: " + quest.wantedBuildingType + ", Placed Object Type: " + objectType);
+                //Debug.Log("Quest Type: " + quest.wantedBuildingType + ", Placed Object Type: " + objectType);
                 CompleteCurrentQuest(quest.questName);
                 break;
             }
+        }
+    }
+
+    public QuestData GetCurrentQuest()
+    {
+        if (currentQuestIndex < quests.Count)
+        {
+            return quests[currentQuestIndex];
+        }
+        else
+        {
+            return null;
         }
     }
 }

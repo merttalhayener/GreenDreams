@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questType: 0
   wantedBuildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
-  questName: BuildWall
-  targetCount: 5
-  currentCount: 5
-  isCompleted: 1
-  buildObject: {fileID: 1185572622723157924, guid: c04bfb4b44ab67b449a984acc9de9c09,
-    type: 3}
+  questName: Build 4 Wall
+  questDescription: Place walls for your shed
+  targetCount: 4
+  currentCount: 0
+  isCompleted: 0

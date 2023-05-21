@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: CollectWood
   m_EditorClassIdentifier: 
   questType: 1
+  wantedBuildingType: {fileID: 0}
   questName: Collect 5 Wood
-  targetCount: 2
+  questDescription: Collect 10 Wood
+  targetCount: 10
   currentCount: 0
   isCompleted: 0
