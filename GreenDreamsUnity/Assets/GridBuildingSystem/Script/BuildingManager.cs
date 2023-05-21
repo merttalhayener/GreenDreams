@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.Events;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -21,28 +22,33 @@ public class BuildingManager : MonoBehaviour
 
     public ParticleSystem childrenParticleSystem;
     public CursorLock cursorLock;
-   
+
 
     private Vector3 pos;
     private RaycastHit hit;
 
     [SerializeField] private LayerMask placableLayers;
-    
+
     public float rotateAmount;
-  
+
     public float gridSize;
-    bool gridOn=true;
+    bool gridOn = true;
     [SerializeField] private Toggle gridToggle;
 
     public bool canPlace;
     public bool buildingOpen;
     bool rotating;
-    
+
 
     public Material[] materials;
-    
+
 
     public float maxSlopeAngle = 30f; // inþaat yapýlacak maksimum eðim açýsý
+
+
+    public UnityEvent<string> OnObjectPlaced; // BuildingQuest'i tetiklemek için event
+    public QuestManager questManager;
+
 
     private void Start()
     {
@@ -52,10 +58,6 @@ public class BuildingManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-       // Vector3 mousePos = Input.mousePosition;
-       // mousePos = pos;
-       
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 1000, placableLayers))
         {
@@ -63,26 +65,24 @@ public class BuildingManager : MonoBehaviour
         }
         MouseLock();
     }
-    
+
     void Update()
     {
         if (pendingObject != null)
         {
-
             gridTerrain.enabled = true;
             buildingOpen = true;
 
             if (gridOn)
             {
                 Vector3 targetPos = new Vector3(RoundToNearestGrid(pos.x), (pos.y), RoundToNearestGrid(pos.z));
-                pendingObject.transform.position =  Vector3.Lerp(pendingObject.transform.position, targetPos , Time.deltaTime *40f);
+                pendingObject.transform.position = Vector3.Lerp(pendingObject.transform.position, targetPos, Time.deltaTime * 40f);
             }
 
             if (Input.GetMouseButtonDown(0) && canPlace && !IsMouseOverUI())
             {
                 PlaceObject();
                 buildingOpen = false;
-               
             }
 
             if (Input.GetKeyDown(KeyCode.R))
@@ -96,14 +96,10 @@ public class BuildingManager : MonoBehaviour
             }
 
             ChangeMaterials();
-           
         }
-
         else
         {
             buildingOpen = false;
-           
-            //MouseLock();
             gridTerrain.enabled = false;
             canPlace = true;
         }
@@ -111,7 +107,7 @@ public class BuildingManager : MonoBehaviour
 
     private bool IsMouseOverUI()
     {
-       return EventSystem.current.IsPointerOverGameObject();
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     private void CreateParticleEffect()
@@ -119,7 +115,7 @@ public class BuildingManager : MonoBehaviour
         if (pendingObject != null)
         {
             childrenParticleSystem = pendingObject.GetComponentInChildren<ParticleSystem>();
-            if(childrenParticleSystem != null)
+            if (childrenParticleSystem != null)
             {
                 childrenParticleSystem.Play();
             }
@@ -135,9 +131,9 @@ public class BuildingManager : MonoBehaviour
         checkPlacement = pendingObject.GetComponent<CheckPlacement>();
         checkPlacement.isPlaced = true;
 
-        //Materyal deðiþimleri
+        // Materyal deðiþiklikleri
         materials = pendingObject.GetComponent<MeshRenderer>().materials;
-        
+
         foreach (var material in materials)
         {
             material.color = Color.white;
@@ -150,14 +146,26 @@ public class BuildingManager : MonoBehaviour
         {
             playerAnimator.SetTrigger("Build");
         }
-        
+
         pendingObject = null;
         source.PlayOneShot(placedSound, 0.3f);
         buildingOpen = false;
-        
-        SelectObject(lastIndex);
-    }
 
+        // Duvar inþa edildiðinde eventi tetikle ve görev adýný parametre olarak gönder
+        if (OnObjectPlaced != null)
+        {
+            OnObjectPlaced.Invoke("BuildWall");
+        }
+
+        SelectObject(lastIndex);
+
+        // Yeni eklenen kod satýrý - QuestManager'ý bul ve HandleObjectPlaced metodunu çaðýr
+        QuestManager questManager = FindObjectOfType<QuestManager>();
+        if (questManager != null)
+        {
+            questManager.HandleObjectPlaced(pendingObject);
+        }
+    }
     IEnumerator RotateSmooth(Vector3 byAngles, float inTime)
     {
         var fromAngle = pendingObject.transform.rotation;
@@ -175,14 +183,14 @@ public class BuildingManager : MonoBehaviour
     {
         if (!rotating)
         {
-         rotating = true;
-         StartCoroutine(RotateSmooth(Vector3.up * 45f, 0.1f));
+            rotating = true;
+            StartCoroutine(RotateSmooth(Vector3.up * 45f, 0.1f));
         }
     }
 
     public void UpdateMaterials()
     {
-        if (canPlace && pendingObject !=null)
+        if (canPlace && pendingObject != null)
         {
             pendingObject.GetComponent<MeshRenderer>().material.color = Color.green;
         }
@@ -195,11 +203,11 @@ public class BuildingManager : MonoBehaviour
 
     public void ChangeMaterials()
     {
-        if(pendingObject != null)
+        if (pendingObject != null)
         {
-          materials = pendingObject.GetComponent<MeshRenderer>().materials;
+            materials = pendingObject.GetComponent<MeshRenderer>().materials;
         }
-       
+
         if (canPlace && pendingObject != null)
         {
             foreach (var material in materials)
@@ -219,9 +227,9 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        lastIndex=index;
-       
-        Destroy (pendingObject);   
+        lastIndex = index;
+
+        Destroy(pendingObject);
         pendingObject = Instantiate(objects[index], pos, objects[index].transform.rotation);
         buildingOpen = true;
     }
@@ -242,14 +250,7 @@ public class BuildingManager : MonoBehaviour
 
     public void ToggleGrid()
     {
-        if (gridToggle.isOn)
-        {
-            gridOn = true;
-        }
-        else
-        {
-            gridOn = false;
-        }
+        gridOn = gridToggle.isOn;
     }
 
     float RoundToNearestGrid(float pos)

@@ -71,7 +71,7 @@ public class CheckPlacement : MonoBehaviour
                
                 if (buildingAllowedType.Contains(otherBuildingType))
                 {
-                        Debug.Log("Listede Var:  " + otherBuildingType);
+                        //Debug.Log("Listede Var:  " + otherBuildingType);
                         buildingManager.canPlace = true;
                 }
                 else
@@ -89,7 +89,7 @@ public class CheckPlacement : MonoBehaviour
                 {
                    
                     buildingManager.canPlace = true;
-                    Debug.Log("Listede Var:  " + otherBuildingType);
+                   // Debug.Log("Listede Var:  " + otherBuildingType);
                 }
                 else
                 {
