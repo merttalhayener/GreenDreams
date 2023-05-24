@@ -107,7 +107,7 @@ namespace StarterAssets
         public float zoomMinDistance = 2f;
         public float zoomSpeed = 0.02f;
         public float zoomFactor = 0.5f;
-        private float zoom = 2f;
+        private float zoom = 3f;
         private float cameraDistance = 2f;
         private float zoomVelocity = 0f;
 

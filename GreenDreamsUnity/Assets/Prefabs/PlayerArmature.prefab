@@ -1437,7 +1437,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.28
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
@@ -1486,6 +1486,12 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  cinemachineVirtualCamera: {fileID: 0}
+  zoomDistance: 1.5
+  zoomMaxDistance: 6
+  zoomMinDistance: 2
+  zoomSpeed: 0.02
+  zoomFactor: 0.5
 --- !u!114 &2632281683597465432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1525,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  zoom: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
