@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questType: 0
   wantedBuildingType: {fileID: 11400000, guid: 60fe41848a9824f4880977113af84ad9, type: 2}
-  questName: Build Floor
-  questDescription: Place floor for your shed
+  questName: buildfloor
+  questDescription: Place floor
   targetCount: 1
-  currentCount: 0
-  isCompleted: 0
+  currentCount: 1
+  isCompleted: 1

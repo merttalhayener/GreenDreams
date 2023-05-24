@@ -14,7 +14,6 @@ Material:
   - _TRANSLUCENCYONOFF_ON
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
-  - _CUSTOMCOLORSTINTING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -84,7 +83,7 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.5
     - _BumpScale: 1
-    - _CUSTOMCOLORSTINTING: 1
+    - _CUSTOMCOLORSTINTING: 0
     - _CUSTOMWIND: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -93,9 +92,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Gradient: 0.118
-    - _GradientPower: 10
-    - _LeavesThickness: 0.47
+    - _Gradient: 0.123
+    - _GradientPower: 1.74
+    - _LeavesThickness: 0.5
     - _MaskClipValue: 0.5
     - _Metallic: 0
     - _Mode: 3
@@ -107,9 +106,9 @@ Material:
     - _SNOWONOFF: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _SnowAmount: 0.868
-    - _SnowCoverage: 0
-    - _SnowGradient: 0
+    - _SnowAmount: 1
+    - _SnowCoverage: 0.45
+    - _SnowGradient: 0.83
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TRANSLUCENCYONOFF: 1
@@ -131,6 +130,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.039546248, g: 0.33245158, b: 0.018500218, a: 1}
-    - _TopColor: {r: 0.16202943, g: 0.3813261, b: 0.051269468, a: 1}
+    - _GroundColor: {r: 1, g: 0, b: 0, a: 1}
+    - _TopColor: {r: 0.5754717, g: 0.5186884, b: 0.04071733, a: 1}
   m_BuildTextureStacks: []

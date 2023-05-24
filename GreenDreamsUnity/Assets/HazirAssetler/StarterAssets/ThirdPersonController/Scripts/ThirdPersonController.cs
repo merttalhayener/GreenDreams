@@ -1,5 +1,4 @@
-﻿using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -101,16 +100,6 @@ namespace StarterAssets
 
         private PlayerStatsManager playerStatsManager;
 
-        public CinemachineVirtualCamera cinemachineVirtualCamera;
-        public float zoomDistance = 1.5f;
-        public float zoomMaxDistance = 6f;
-        public float zoomMinDistance = 2f;
-        public float zoomSpeed = 0.02f;
-        public float zoomFactor = 0.5f;
-        private float zoom = 4f;
-        private float cameraDistance = 2f;
-        private float zoomVelocity = 0f;
-
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
@@ -165,8 +154,6 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
-
-            this.zoomVelocity = 0f;
         }
 
         private void Update()
@@ -176,13 +163,11 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            CameraZoom();
         }
 
         private void LateUpdate()
         {
             CameraRotation();
-           
         }
 
         private void AssignAnimationIDs()
@@ -208,14 +193,6 @@ namespace StarterAssets
                 _animator.SetBool(_animIDGrounded, Grounded);
             }
         }
-        private void CameraZoom()
-        {
-            this.zoom -= _input.zoom /240f * this.zoomFactor;
-            this.zoom=Mathf.Clamp(this.zoom, this.zoomMinDistance, this.zoomMaxDistance);
-            this.cameraDistance = Mathf.SmoothDamp(this.cameraDistance, this.zoom, ref this.zoomVelocity, Time.fixedDeltaTime * this.zoomSpeed);
-
-            this.cinemachineVirtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>().CameraDistance = this.cameraDistance;
-        }
 
         private void CameraRotation()
         {
@@ -237,8 +214,7 @@ namespace StarterAssets
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
         }
-        
-      
+
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
