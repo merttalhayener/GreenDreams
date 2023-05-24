@@ -7,7 +7,7 @@ using UnityEngine;
 public class CameraAngleHandler : MonoBehaviour
 {
      [SerializeField] private CinemachineVirtualCamera virtualCamera;
-    [SerializeField] private Cinemachine3rdPersonFollow targetCamera;
+    private Cinemachine3rdPersonFollow targetCamera;
    
     public float desiredVerticalArm;
 
