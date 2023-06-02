@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ResetTheGame();
+        }
+    }
+
 
     public void ResetTheGame()
     {
