@@ -35,5 +35,6 @@ MonoBehaviour:
       value: 0
       min: 1
       max: 12
-  groundItem: {fileID: 0}
+  groundItem: {fileID: -927199367670048503, guid: c9aacc175fa79924b9356d5252824517,
+    type: 3}
   boneNames: []
