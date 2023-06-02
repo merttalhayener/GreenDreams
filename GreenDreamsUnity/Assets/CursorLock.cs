@@ -41,8 +41,8 @@ public class CursorLock : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
 
-        inventoryIsClosed = true;
-        equipmentIsClosed = true;
+        inventoryIsClosed = false;
+        equipmentIsClosed = false;
         toolbeltIsClosed = true;
         toolbeltOnScreenIsClosed = false;
         miniMapIsClosed = false;
@@ -51,8 +51,8 @@ public class CursorLock : MonoBehaviour
         buildingPanelIsClosed = true;
 
 
-        Inventory.SetActive(false);
-        Equipment.SetActive(false);
+        Inventory.SetActive(true);
+        Equipment.SetActive(true);
         Toolbelt.SetActive(false);
         ToolbeltOnScreen.SetActive(true);
         miniMap.SetActive(true);
@@ -69,6 +69,8 @@ public class CursorLock : MonoBehaviour
             if (inventoryIsClosed && equipmentIsClosed && toolbeltIsClosed && toolbeltOnScreenIsClosed == false && miniMapIsClosed == false &&weatherBGIsClosed==false)
             {
                 Debug.Log("bastý");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 source.PlayOneShot(inventoryOpenSound, 0.3f);
                 Inventory.SetActive(true);
                 Equipment.SetActive(true);
