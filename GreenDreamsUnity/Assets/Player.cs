@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     private Transform chest;
     private Transform helmet;
     private Transform offhand;
-    private Transform sword;
+    private Transform tool;
 
-    public Transform weaponTransform;
+    public Transform toolTransform;
     public Transform offhandWristTransform;
     public Transform offhandHandTransform;
 
@@ -70,10 +70,10 @@ public class Player : MonoBehaviour
                         case ItemType.Helmet:
                             Destroy(helmet.gameObject);
                             break;
-                        case ItemType.Weapon:
-                            Destroy(sword.gameObject);
+                        case ItemType.Tool:
+                            Destroy(tool.gameObject);
                             break;
-                        case ItemType.Shield:
+                        case ItemType.Consumables:
                             Destroy(offhand.gameObject);
                             break;
                         case ItemType.Boots:
@@ -122,17 +122,17 @@ public class Player : MonoBehaviour
                             helmet = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay,
                                 _slot.ItemObject.boneNames);
                             break;
-                        case ItemType.Weapon:
-                            sword = Instantiate(_slot.ItemObject.characterDisplay, weaponTransform).transform;
+                        case ItemType.Tool:
+                            tool = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform;
                             break;
-                        case ItemType.Shield:
+                        case ItemType.Consumables:
                             switch (_slot.ItemObject.type)
                             {
-                                case ItemType.Weapon:
+                                case ItemType.Tool:
                                     offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandHandTransform)
                                         .transform;
                                     break;
-                                case ItemType.Shield:
+                                case ItemType.Consumables:
                                     offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandWristTransform)
                                         .transform;
                                     break;

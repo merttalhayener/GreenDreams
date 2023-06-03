@@ -17,61 +17,61 @@ MonoBehaviour:
   type: 2
   Container:
     Slots:
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 0000000002000000
+    - AllowedItems: 0100000002000000
       item:
         Name: 
         Id: -1

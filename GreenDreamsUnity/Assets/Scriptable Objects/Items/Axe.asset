@@ -9,16 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efaeb925619c41418f65ebc2791e5aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c0c13f57ba708247bb75e15ad7b47ab, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  Id: 2
-  uiDisplay: {fileID: 21300000, guid: acb29c2427898f447b0909f0161a561f, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+  characterDisplay: {fileID: 7656355409390688673, guid: 2d664bb1bc4c42a4c8bd7a77835bf38d,
+    type: 3}
+  stackable: 0
   type: 1
-  description: AXE
-  buffs:
-  - attribute: 2
-    value: 0
-    min: 5
-    max: 7
-  groundItem: {fileID: 0}
+  description: 
+  data:
+    Name: 
+    Id: 16
+    buffs: []
+  groundItem: {fileID: 7656355409390688673, guid: 2d664bb1bc4c42a4c8bd7a77835bf38d,
+    type: 3}
+  boneNames: []
