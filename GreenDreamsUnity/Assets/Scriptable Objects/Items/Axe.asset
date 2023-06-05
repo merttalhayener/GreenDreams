@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
-  characterDisplay: {fileID: 7656355409390688673, guid: 2d664bb1bc4c42a4c8bd7a77835bf38d,
+  characterDisplay: {fileID: -927199367670048503, guid: c9aacc175fa79924b9356d5252824517,
     type: 3}
   stackable: 0
   type: 1
@@ -22,6 +22,6 @@ MonoBehaviour:
     Name: 
     Id: 16
     buffs: []
-  groundItem: {fileID: 7656355409390688673, guid: 2d664bb1bc4c42a4c8bd7a77835bf38d,
+  groundItem: {fileID: -927199367670048503, guid: c9aacc175fa79924b9356d5252824517,
     type: 3}
   boneNames: []
