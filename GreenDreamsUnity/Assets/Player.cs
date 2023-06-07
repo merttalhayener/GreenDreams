@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+
+    public GameObject buildingCanvas;
+
     public InventoryObject inventory;
     public InventoryObject equipment;
 
