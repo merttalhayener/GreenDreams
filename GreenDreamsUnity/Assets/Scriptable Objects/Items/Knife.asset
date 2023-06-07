@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0c13f57ba708247bb75e15ad7b47ab, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 8796641721362945431, guid: d07b803c54ae9fb4ebfc1e8a13b12f4c,
-    type: 3}
+  uiDisplay: {fileID: 21300000, guid: b7f009356fbdfdf47a13761b6943dda7, type: 3}
   characterDisplay: {fileID: 4682650962112100238, guid: ce2204ad7743b3445befdd8da95cda27,
     type: 3}
   stackable: 0
