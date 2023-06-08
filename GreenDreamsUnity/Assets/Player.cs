@@ -175,25 +175,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inventory.Save();
-            equipment.Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            inventory.Load();
-            equipment.Load();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            reset.ResetTheGame();
-        }
-    }
-
     public void AttributeModified(Attribute attribute)
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));

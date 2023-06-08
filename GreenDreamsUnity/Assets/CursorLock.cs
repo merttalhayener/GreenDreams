@@ -90,10 +90,10 @@ public class CursorLock : MonoBehaviour
                 weatherBGIsClosed = true;
 
 
-                //Alpha deðiþikliði
-                Color tmp = Inventory.GetComponent<Image>().color;
-                tmp.a = 1f;
-                Inventory.GetComponent<Image>().color = tmp;
+                ////Alpha deðiþikliði
+                //Color tmp = Inventory.GetComponent<Image>().color;
+                //tmp.a = 1f;
+                //Inventory.GetComponent<Image>().color = tmp;
             }
             else
             {

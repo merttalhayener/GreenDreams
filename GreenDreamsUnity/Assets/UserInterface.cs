@@ -6,12 +6,16 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using System;
+using System.Runtime.ConstrainedExecution;
+using System.Linq;
 
 public abstract class UserInterface : MonoBehaviour
 {
    
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
+    public Sprite nullSprite;
+
     void Start()
     {
         for (int i = 0; i < inventory.GetSlots.Length; i++)
@@ -21,9 +25,11 @@ public abstract class UserInterface : MonoBehaviour
 
         }
         CreateSlots();
+        inventory.Clear();
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
+
 
     private void OnSlotUpdate(InventorySlot _slot)
     {
@@ -35,17 +41,18 @@ public abstract class UserInterface : MonoBehaviour
         }
         else
         {
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = nullSprite;
+            _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
             _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    slotsOnInterface.UpdateSlotDisplay();
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+       
+        // slotsOnInterface.UpdateSlotDisplay();
+    }
     public abstract void CreateSlots();
 
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
