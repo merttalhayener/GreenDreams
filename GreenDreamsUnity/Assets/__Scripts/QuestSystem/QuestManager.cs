@@ -14,6 +14,7 @@ public class QuestManager : MonoBehaviour
     public BuildingManager buildingManager;
 
     [SerializeField]private GameObject goNextButton;
+    [SerializeField] private GameObject questProgressButton;
 
 
     private void Awake()
@@ -44,10 +45,12 @@ public class QuestManager : MonoBehaviour
         if (currentQuest.questType != QuestType.Talk)
         {
             goNextButton.gameObject.SetActive(false);
+            questProgressButton.gameObject.SetActive(true);
         }
         else
         {
             goNextButton.gameObject.SetActive(true);
+            questProgressButton.gameObject.SetActive(false);
         }
     }
 
