@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class CursorLock : MonoBehaviour
 {
-
     [SerializeField] BuildingManager buildingManager;
 
     public GameObject Inventory;
@@ -18,7 +18,7 @@ public class CursorLock : MonoBehaviour
     public GameObject questPersonIMG;
     public GameObject miniMap;
     public GameObject weatherBG;
-    
+
 
 
     public int activeChildIndex = 1;
@@ -31,11 +31,11 @@ public class CursorLock : MonoBehaviour
     public bool questBGIsClosed;
     public bool weatherBGIsClosed;
     public bool buildingPanelIsClosed;
-    
+
 
     [SerializeField] private AudioClip inventoryOpenSound;
     [SerializeField] private AudioSource source;
-   
+
     void Start()
     {
         //Cursor.lockState = CursorLockMode.None;
@@ -66,7 +66,7 @@ public class CursorLock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (inventoryIsClosed && equipmentIsClosed && toolbeltIsClosed && toolbeltOnScreenIsClosed == false && miniMapIsClosed == false &&weatherBGIsClosed==false)
+            if (inventoryIsClosed && equipmentIsClosed && toolbeltIsClosed && toolbeltOnScreenIsClosed == false && miniMapIsClosed == false && weatherBGIsClosed == false)
             {
                 Debug.Log("bastý");
                 Cursor.lockState = CursorLockMode.None;
@@ -105,7 +105,7 @@ public class CursorLock : MonoBehaviour
                 ToolbeltOnScreen.SetActive(true);
                 miniMap.SetActive(true);
                 weatherBG.SetActive(true);
-                buildingCanvas.SetActive(true);
+                
                 inventoryIsClosed = true;
                 equipmentIsClosed = true;
                 toolbeltIsClosed = true;
@@ -134,12 +134,44 @@ public class CursorLock : MonoBehaviour
         {
             if (buildingPanelIsClosed && inventoryIsClosed == true)
             {
+
+                Player _player = (Player)Component.FindObjectsOfType(typeof(Player), false).FirstOrDefault();
+                InventorySlot[] _slots = _player.equipment.GetSlots;
+                var setActive = false;
+                foreach (var slot in _slots)
+                {
+                    if (slot.item.Id == 17)
+                    {
+                        setActive = true;
+                        break;
+                    }
+                }
+
+                //craft menü için envanter tarama örneði
+              ////  Player _player = (Player)Component.FindObjectsOfType(typeof(Player), false).FirstOrDefault();
+              //  InventorySlot[] _slotsInv = _player.inventory.GetSlots;
+              //  var _hammerAmount = 0;
+              //  var _knifeAmount = 0;
+              //  //var doluSlotlar = _slotsInv.Where(s => s.item.Id != -1);
+              //  //var consumables = doluSlotlar.Where(x => x.item.GetType == ItemType.Consumables);
+              //  foreach (var slot in _slotsInv.Where(s=>s.item.Id!=-1))
+              //  {
+              //      if (slot.item.Id == 17)
+              //      {
+              //          _hammerAmount = slot.amount;
+              //      }
+              //      if (slot.item.Id == 18)
+              //      {
+              //          _knifeAmount = slot.amount;
+              //      }
+              //  }
+
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                buildingCanvas.SetActive(true);
+                buildingCanvas.SetActive(setActive);
                 buildingPanelIsClosed = false;
             }
-            else if(!buildingPanelIsClosed )
+            else if (!buildingPanelIsClosed)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -148,5 +180,5 @@ public class CursorLock : MonoBehaviour
             }
         }
     }
-    
+
 }

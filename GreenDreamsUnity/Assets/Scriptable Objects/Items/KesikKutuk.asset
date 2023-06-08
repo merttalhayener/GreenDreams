@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b544355b639134c833311fae7335d4, type: 3}
   m_Name: KesikKutuk
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 2e79a212f96f5ea478906d6224ce1922, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 101de9b13688cf44cb955d48eab6987a, type: 3}
   characterDisplay: {fileID: 0}
   stackable: 1
-  type: 6
+  type: 5
   description: 
   data:
     Name: 

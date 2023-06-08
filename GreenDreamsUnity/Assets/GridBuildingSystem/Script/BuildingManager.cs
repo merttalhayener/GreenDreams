@@ -163,7 +163,7 @@ public class BuildingManager : MonoBehaviour
         QuestManager questManager = FindObjectOfType<QuestManager>();
         if (questManager != null)
         {
-            questManager.HandleObjectPlaced(pendingObject);
+            questManager.HandleBuildQuest();
         }
     }
     IEnumerator RotateSmooth(Vector3 byAngles, float inTime)

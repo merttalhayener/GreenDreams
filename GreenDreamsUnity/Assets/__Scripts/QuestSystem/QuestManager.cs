@@ -1,13 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static TMPro.Examples.TMP_ExampleScript_01;
 
 public class QuestManager : MonoBehaviour
 {
     public List<QuestData> quests; // Quest listesini Inspector'dan doldurun
-    public QuestProgress questProgress; // QuestProgress referansý
 
     public int currentQuestIndex;
+
+    public UnityEvent<string> OnQuestComplete;
+
+    public BuildingManager buildingManager;
+
+    [SerializeField]private GameObject goNextButton;
+
 
     private void Awake()
     {
@@ -17,15 +24,33 @@ public class QuestManager : MonoBehaviour
         currentQuestIndex = 0;
         LoadNextQuest();
 
-        if (questProgress != null)
+        if (OnQuestComplete == null)
         {
-            questProgress.OnQuestComplete.AddListener(CompleteCurrentQuest);
+            OnQuestComplete = new UnityEvent<string>();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (OnQuestComplete != null)
+            {
+                CompleteCurrentQuest(currentQuestIndex);
+            }
+        }
+
+        QuestData currentQuest = GetCurrentQuest();
+        if (currentQuest.questType != QuestType.Talk)
+        {
+            goNextButton.gameObject.SetActive(false);
         }
         else
         {
-            Debug.LogError("QuestProgress object not found in the scene!");
+            goNextButton.gameObject.SetActive(true);
         }
     }
+
     private void ResetQuests()
     {
         foreach (QuestData quest in quests)
@@ -37,32 +62,28 @@ public class QuestManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (questProgress != null)
-        {
-            questProgress.OnQuestComplete.RemoveListener(CompleteCurrentQuest);
-        }
+        OnQuestComplete.RemoveAllListeners();
     }
 
-    public void CompleteCurrentQuest(string questName)
+    public void CompleteCurrentQuest(int questIndex)
     {
-        if (currentQuestIndex < quests.Count)
+        if (questIndex >= 0 && questIndex < quests.Count)
         {
-            // Mevcut görevin ilerlemesini güncelle
-            QuestData currentQuest = quests[currentQuestIndex];
-            if (currentQuest.questName == questName)
+            QuestData currentQuest = quests[questIndex];
+
+            currentQuest.currentCount++;
+            Debug.Log("Quest progress updated: " + currentQuest.questName + " (" + currentQuest.currentCount + "/" + currentQuest.targetCount + ")");
+
+            // Görev tamamlandýysa ilgili iþlemleri gerçekleþtir
+            if (currentQuest.currentCount >= currentQuest.targetCount)
             {
-                currentQuest.currentCount++;
-                Debug.Log("Quest progress updated: " + currentQuest.questName + " (" + currentQuest.currentCount + "/" + currentQuest.targetCount + ")");
+                currentQuest.isCompleted = true;
+                Debug.Log("Quest completed: " + currentQuest.questName);
 
-                // Görev tamamlandýysa ilgili iþlemleri gerçekleþtir
-                if (currentQuest.currentCount >= currentQuest.targetCount)
-                {
-                    currentQuest.isCompleted = true;
-                    Debug.Log("Quest completed: " + currentQuest.questName);
+                currentQuestIndex++;
+                LoadNextQuest();
 
-                    currentQuestIndex++;
-                    LoadNextQuest();
-                }
+                 // Mevcut görev tamamlandýktan sonra HandleQuestType çaðrýlýyor
             }
         }
     }
@@ -79,6 +100,8 @@ public class QuestManager : MonoBehaviour
                 Debug.Log("Quest completed: " + currentQuest.questName);
                 currentQuestIndex++;
                 LoadNextQuest();
+
+                HandleQuestType(); // Mevcut görev tamamlandýktan sonra HandleQuestType çaðrýlýyor
             }
             else
             {
@@ -93,21 +116,60 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public void HandleObjectPlaced(GameObject placedObject)
+    public void HandleQuestType()
     {
-        BuildingType objectType = placedObject.GetComponent<ObjectTypeManager>().buildingType; // ObjectType bileþeninden nesnenin türünü alýn
+        QuestData currentQuest = GetCurrentQuest();
 
-        foreach (QuestData quest in quests)
+        if (currentQuest != null)
         {
-            if (quest.wantedBuildingType == objectType) // Nesnenin türünü görevin türüyle kýyaslayýn
+            switch (currentQuest.questType)
             {
-                //Debug.Log("Quest Type: " + quest.wantedBuildingType + ", Placed Object Type: " + objectType);
-                CompleteCurrentQuest(quest.questName);
-                break;
+                case QuestType.Build:
+                    HandleBuildQuest();
+                    break;
+                case QuestType.Collect:
+                    HandleCollectQuest();
+                    break;
+                case QuestType.UseItem:
+                    HandleUseItemQuest();
+                    break;
+                case QuestType.Talk:
+                    HandleTalkQuest();
+                    break;
+                default:
+                    Debug.LogError("Unhandled quest type: " + currentQuest.questType);
+                    break;
             }
         }
     }
 
+    public void HandleBuildQuest()
+    {
+        BuildingType objectType = buildingManager.pendingObject.GetComponent<ObjectTypeManager>().buildingType;
+        if (quests[currentQuestIndex].wantedBuildingType == objectType)
+        {
+            CompleteCurrentQuest(currentQuestIndex);
+        }
+    }
+
+    public void HandleCollectQuest()
+    {
+        // Collect quest özel iþlemlerini burada gerçekleþtirin
+    }
+
+    public void HandleUseItemQuest()
+    {
+        // Use item quest özel iþlemlerini burada gerçekleþtirin
+    }
+
+    public void HandleTalkQuest()
+    {
+        if (quests[currentQuestIndex].questType == QuestType.Talk )
+        {
+            CompleteCurrentQuest(currentQuestIndex);
+        }
+        
+    }
     public QuestData GetCurrentQuest()
     {
         if (currentQuestIndex < quests.Count)
@@ -119,4 +181,5 @@ public class QuestManager : MonoBehaviour
             return null;
         }
     }
+
 }

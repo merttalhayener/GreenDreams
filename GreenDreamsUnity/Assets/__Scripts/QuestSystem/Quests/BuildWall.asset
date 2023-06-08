@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c897e8b1a475e41b0f1466778a8a55, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a51d3884a5381e448809386d0bfd61a, type: 3}
   m_Name: BuildWall
   m_EditorClassIdentifier: 
   questType: 0
   wantedBuildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
-  questName: buildwalls5
-  questDescription: Place walls
-  targetCount: 5
-  currentCount: 5
+  questName: Build Wall
+  questDescription: Place 3 walls.
+  targetCount: 3
+  currentCount: 3
   isCompleted: 1
