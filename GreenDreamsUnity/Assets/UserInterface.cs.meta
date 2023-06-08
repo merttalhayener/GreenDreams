@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - inventory: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
+  - circle: {fileID: 21300000, guid: 5c71facc2f5e61a43855fff4c229abeb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
