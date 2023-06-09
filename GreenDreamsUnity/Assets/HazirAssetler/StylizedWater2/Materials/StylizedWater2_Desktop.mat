@@ -190,9 +190,9 @@ Material:
     - _ReceiveShadows: 1
     - _ReflectionBlur: 0
     - _ReflectionDistortion: 0.09
-    - _ReflectionFresnel: 5.9
-    - _ReflectionLighting: 1
-    - _ReflectionStrength: 1
+    - _ReflectionFresnel: 6.3
+    - _ReflectionLighting: 0.396
+    - _ReflectionStrength: 0.65
     - _Reflectivity: 1
     - _RefractionAmount: 0.05
     - _RefractionOn: 1
@@ -214,15 +214,15 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SparkleIntensity: 0
-    - _SparkleSize: 0.302
+    - _SparkleSize: 0
     - _SpecularHighlights: 1
     - _SpecularReflectionsOn: 1
     - _Speed: 1
     - _SrcBlend: 1
     - _SunReflectionDistortion: 0.762
     - _SunReflectionPerturbance: 0.386
-    - _SunReflectionSize: 0.932
-    - _SunReflectionStrength: 10
+    - _SunReflectionSize: 1
+    - _SunReflectionStrength: 5
     - _Surface: 0
     - _TEXTURE_INTERSECTIONOn: 0
     - _Texture_IntersectionOn: 1
@@ -251,7 +251,7 @@ Material:
     - _ZClip: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.16451614, b: 0.34, a: 0.9647059}
+    - _BaseColor: {r: 0.011569957, g: 0.09692384, b: 0.18867922, a: 0.9647059}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _DepthMapBounds: {r: -402.3, g: -459.43, b: 0.0012693577, a: 0}
     - _Direction: {r: 1, g: 1, b: 0, a: 0}
@@ -261,7 +261,7 @@ Material:
     - _HorizonColor: {r: 0.68, g: 1, b: 0.99, a: 0.15}
     - _IntersectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShallowColor: {r: 0, g: 1, b: 0.98136926, a: 0.3764706}
+    - _ShallowColor: {r: 0, g: 0.3490566, b: 0.34221238, a: 0.3764706}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _WaterColor: {r: 0.21176466, g: 0.6745098, b: 1, a: 1}
     - _WaterShallowColor: {r: 0, g: 0.9394503, b: 1, a: 1}
