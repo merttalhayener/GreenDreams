@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.10826455, g: 0.268006, b: 0.427005, a: 1}
+  m_IndirectSpecularColor: {r: 0.10827134, g: 0.2680328, b: 0.42701465, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -40983,7 +40983,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1188505988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369165521}
+        m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
+        m_MethodName: CompleteCurrentQuest
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1188505988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41984,9 +41996,38 @@ PrefabInstance:
       objectReference: {fileID: 378070243}
     - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
         type: 3}
+      propertyPath: quests.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
+        type: 3}
       propertyPath: questProgressButton
       value: 
       objectReference: {fileID: 805353735}
+    - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
+        type: 3}
+      propertyPath: quests.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7402a191563c63146a2bc0e61d681fc2,
+        type: 2}
+    - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
+        type: 3}
+      propertyPath: quests.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c4aeca431545b2b41b8fc67cf2ecab77,
+        type: 2}
+    - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
+        type: 3}
+      propertyPath: quests.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 299f951be81244f46b092dc774b2d58a,
+        type: 2}
+    - target: {fileID: 721583168054314921, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
+        type: 3}
+      propertyPath: quests.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9783d8aeee894de438be5657178dcebe,
+        type: 2}
     - target: {fileID: 721583168054314933, guid: e3fa0f3b3eeca834fa24204df5bccaaa,
         type: 3}
       propertyPath: m_Name
