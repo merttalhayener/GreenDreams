@@ -7,6 +7,8 @@ public class PlantableGround : MonoBehaviour
 {
     public GameObject slot1;
     public GameObject slot2;
+    public GameObject slot3;
+    public GameObject slot4;
     public GameObject targetSlot;
 
     public bool sulanmýþ;
@@ -52,6 +54,14 @@ public class PlantableGround : MonoBehaviour
         else if (slot2.transform.childCount == 0)
         {
             targetSlot = slot2;
+        }
+        else if (slot3.transform.childCount == 0)
+        {
+            targetSlot = slot3;
+        }
+        else if (slot4.transform.childCount == 0)
+        {
+            targetSlot = slot4;
         }
         else
         {
