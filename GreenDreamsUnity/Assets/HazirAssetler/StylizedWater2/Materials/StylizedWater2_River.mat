@@ -174,7 +174,7 @@ Material:
     - _SparkleSize: 0.487
     - _SpecularHighlights: 1
     - _SpecularReflectionsOn: 1
-    - _Speed: 1.5
+    - _Speed: 2
     - _SrcBlend: 1
     - _SunReflectionDistortion: 0.974
     - _SunReflectionSize: 0.73
