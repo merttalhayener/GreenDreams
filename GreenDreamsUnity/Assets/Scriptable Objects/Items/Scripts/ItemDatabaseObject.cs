@@ -16,6 +16,26 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
                 ItemObjects[i].data.Id = i;
         }
     }
+
+
+    public Item GetItem(int itemId)
+    {
+        Item item = null;
+
+        for (int i = 0; i < ItemObjects.Length; i++)
+        {
+            if (ItemObjects[i].data.Id == itemId)
+            {
+                item = ItemObjects[i].data;
+
+               
+            }
+
+        }
+
+        return item;
+    }
+
     public void OnAfterDeserialize()
     {
         UpdateID();

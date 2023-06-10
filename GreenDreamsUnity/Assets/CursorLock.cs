@@ -21,6 +21,7 @@ public class CursorLock : MonoBehaviour
 
 
 
+
     public int activeChildIndex = 1;
 
     public bool inventoryIsClosed;
@@ -31,6 +32,7 @@ public class CursorLock : MonoBehaviour
     public bool questBGIsClosed;
     public bool weatherBGIsClosed;
     public bool buildingPanelIsClosed;
+
 
 
     [SerializeField] private AudioClip inventoryOpenSound;
@@ -51,6 +53,7 @@ public class CursorLock : MonoBehaviour
         buildingPanelIsClosed = true;
 
 
+
         Inventory.SetActive(true);
         Equipment.SetActive(true);
         Toolbelt.SetActive(false);
@@ -60,6 +63,7 @@ public class CursorLock : MonoBehaviour
         questPersonIMG.SetActive(true);
         weatherBG.SetActive(true);
         buildingCanvas.SetActive(false);
+
     }
 
     void Update()
@@ -81,6 +85,7 @@ public class CursorLock : MonoBehaviour
                 questPersonIMG.SetActive(false);
                 weatherBG.SetActive(false);
                 buildingCanvas.SetActive(false);
+
                 inventoryIsClosed = false;
                 equipmentIsClosed = false;
                 toolbeltIsClosed = false;
@@ -88,6 +93,8 @@ public class CursorLock : MonoBehaviour
                 miniMapIsClosed = true;
                 questBGIsClosed = true;
                 weatherBGIsClosed = true;
+                questBGIsClosed = true;
+
 
 
                 ////Alpha deðiþikliði
@@ -105,7 +112,7 @@ public class CursorLock : MonoBehaviour
                 ToolbeltOnScreen.SetActive(true);
                 miniMap.SetActive(true);
                 weatherBG.SetActive(true);
-                
+
                 inventoryIsClosed = true;
                 equipmentIsClosed = true;
                 toolbeltIsClosed = true;
@@ -113,7 +120,11 @@ public class CursorLock : MonoBehaviour
                 miniMapIsClosed = false;
                 weatherBGIsClosed = false;
             }
+
         }
+
+
+
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             if (questBGIsClosed == true && inventoryIsClosed == true)
@@ -148,23 +159,23 @@ public class CursorLock : MonoBehaviour
                 }
 
                 //craft menü için envanter tarama örneði
-              ////  Player _player = (Player)Component.FindObjectsOfType(typeof(Player), false).FirstOrDefault();
-              //  InventorySlot[] _slotsInv = _player.inventory.GetSlots;
-              //  var _hammerAmount = 0;
-              //  var _knifeAmount = 0;
-              //  //var doluSlotlar = _slotsInv.Where(s => s.item.Id != -1);
-              //  //var consumables = doluSlotlar.Where(x => x.item.GetType == ItemType.Consumables);
-              //  foreach (var slot in _slotsInv.Where(s=>s.item.Id!=-1))
-              //  {
-              //      if (slot.item.Id == 17)
-              //      {
-              //          _hammerAmount = slot.amount;
-              //      }
-              //      if (slot.item.Id == 18)
-              //      {
-              //          _knifeAmount = slot.amount;
-              //      }
-              //  }
+                ////  Player _player = (Player)Component.FindObjectsOfType(typeof(Player), false).FirstOrDefault();
+                //  InventorySlot[] _slotsInv = _player.inventory.GetSlots;
+                //  var _hammerAmount = 0;
+                //  var _knifeAmount = 0;
+                //  //var doluSlotlar = _slotsInv.Where(s => s.item.Id != -1);
+                //  //var consumables = doluSlotlar.Where(x => x.item.GetType == ItemType.Consumables);
+                //  foreach (var slot in _slotsInv.Where(s=>s.item.Id!=-1))
+                //  {
+                //      if (slot.item.Id == 17)
+                //      {
+                //          _hammerAmount = slot.amount;
+                //      }
+                //      if (slot.item.Id == 18)
+                //      {
+                //          _knifeAmount = slot.amount;
+                //      }
+                //  }
 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -178,7 +189,10 @@ public class CursorLock : MonoBehaviour
                 buildingCanvas.SetActive(false);
                 buildingPanelIsClosed = true;
             }
+
+
         }
     }
-
 }
+
+

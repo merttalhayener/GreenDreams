@@ -37,6 +37,13 @@ public class InventoryObject : ScriptableObject
         slot.AddAmount(_amount);
         return true;
     }
+
+    public void RemoveByItem(Item _item, int _amount)
+    {
+        InventorySlot slot = FindItemOnInventory(_item);
+        slot.UpdateSlot(_item, _amount);
+    }
+
     public int EmptySlotCount
     {
         get
@@ -191,10 +198,14 @@ public class InventorySlot
     {
         UpdateSlot(new Item(), 0);
     }
+
+   
     public void AddAmount(int value)
     {
         UpdateSlot(item, amount += value);
     }
+
+
     public bool CanPlaceInSlot(ItemObject _itemObject)
     {
         if (AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 0)
