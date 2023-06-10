@@ -25,6 +25,8 @@ public class PlantableGround : MonoBehaviour
     {
         //Baþlangýç deðerleri atandý
         büyütmeKatsayýsý = 0f;
+        waterLevel = 50f;
+        fertilizerLevel = 50f;
 
         sulanmýþ = false;
         gübrelenmiþ = false;
@@ -32,12 +34,10 @@ public class PlantableGround : MonoBehaviour
     }
     private void Update()
     {
-        waterLevel = 50f;
-        fertilizerLevel = 50f;
-        CheckWaterAndFertilizerisEnough();
         CalculateGrowthMultiply();
         CheckEmptySlot();
     }
+
     private void CheckEmptySlot()
     {
         //Bu script ekim iþlemi sýrasýnda PlayerPlantingManagerdan çekilecek.
@@ -85,6 +85,7 @@ public class PlantableGround : MonoBehaviour
 
     public float CalculateGrowthMultiply()
     {
+        CheckWaterAndFertilizerisEnough();
         if (sulanmýþ)
         {
             büyütmeKatsayýsý = 50f;

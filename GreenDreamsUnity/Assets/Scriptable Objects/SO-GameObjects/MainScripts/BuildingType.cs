@@ -7,6 +7,7 @@ using UnityEngine;
        Ground,
        Walls,
        PlaceableOnGround,
+       Farm,
        NULLObject
     }
 
