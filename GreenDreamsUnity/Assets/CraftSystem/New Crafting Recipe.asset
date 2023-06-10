@@ -12,20 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e976ce1452e44794596ad46fb63a37d1, type: 3}
   m_Name: New Crafting Recipe
   m_EditorClassIdentifier: 
-  Materials:
+  MaterialList:
   - Item:
-      Name: 
-      Id: 15
-      buffs: []
-    Amount: 1
-  - Item:
-      Name: 
-      Id: 17
-      buffs: []
-    Amount: 1
-  Results:
-  - Item:
-      Name: 
+      Name: Axe
       Id: 16
       buffs: []
     Amount: 1
+    Metarials:
+    - Item:
+        Name: 
+        Id: 15
+        buffs: []
+      Amount: 1
+      Metarials: []
+    - Item:
+        Name: 
+        Id: 17
+        buffs: []
+      Amount: 1
+      Metarials: []
+  - Item:
+      Name: Knife
+      Id: 18
+      buffs: []
+    Amount: 1
+    Metarials:
+    - Item:
+        Name: "Kesik K\xFCt\xFCk"
+        Id: 15
+        buffs: []
+      Amount: 2
+      Metarials: []
