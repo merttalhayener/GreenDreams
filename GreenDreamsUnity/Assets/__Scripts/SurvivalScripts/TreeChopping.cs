@@ -30,7 +30,7 @@ public class TreeChopping : MonoBehaviour
 
     void Update()
     {
-
+        AxeControl();
         if (Input.GetKeyDown(KeyCode.E) && selector.selectedObject != null && playerStatsManager.HasStamina)
         {
             treeManager = selector.selectedObject.GetComponent<TreeManager>();
@@ -51,7 +51,6 @@ public class TreeChopping : MonoBehaviour
     {
         if (typeManager.objectType.type.ToString() == "Tree" && selector.distance <= 1.5f)
         {
-            transform.LookAt(selector.selectedObject.transform.position);
             AxeControl();
             Debug.Log(axeEquiped);
 
@@ -61,6 +60,7 @@ public class TreeChopping : MonoBehaviour
                 
                 if (axeEquiped)
                 {
+                    transform.LookAt(selector.selectedObject.transform.position);
                     animator.SetTrigger("ChopTree");
                 }
                 

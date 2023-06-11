@@ -27,7 +27,7 @@ public class OutlineSelecter : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Selectable"))
                 {
-                    hit.collider.gameObject.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
+                    //hit.collider.gameObject.GetComponent<MeshFilter>().mesh.UploadMeshData(false);
                     Select(hit.collider.gameObject);
                 }
             }

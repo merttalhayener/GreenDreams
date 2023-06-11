@@ -75,6 +75,8 @@ namespace StarterAssets
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
+        //axe
+        public TreeChopping treeChopping;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -242,7 +244,8 @@ namespace StarterAssets
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint && playerStatsManager.HasStamina ? SprintSpeed : MoveSpeed;
+            float targetSpeed =  _input.sprint && playerStatsManager.HasStamina && !treeChopping.axeEquiped ?  SprintSpeed : MoveSpeed;
+           
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

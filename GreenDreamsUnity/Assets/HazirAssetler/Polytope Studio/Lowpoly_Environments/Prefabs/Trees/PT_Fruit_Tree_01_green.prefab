@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8324691325662006903}
   - component: {fileID: 940305908091222255}
   - component: {fileID: 5143550703023037827}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PT_Fruit_Tree_01_green_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1164602935277360391}
   m_RootOrder: 1
@@ -51,10 +52,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1973228233241776061
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +94,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1164602935277360391}
   - component: {fileID: 6229498194940338806}
-  m_Layer: 0
+  - component: {fileID: 958674733602201500}
+  - component: {fileID: 4349916787997110149}
+  - component: {fileID: 6914513758211853899}
+  m_Layer: 13
   m_Name: PT_Fruit_Tree_01_green
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,10 +114,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2469286659358223274}
   - {fileID: 8324691325662006903}
   - {fileID: 5134591824467236821}
+  - {fileID: 250039159579702361}
+  - {fileID: 4368976889012392671}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,6 +151,88 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6788130300613750309}
   m_Enabled: 1
+--- !u!114 &958674733602201500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973228233241776061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3bfe0f6b6d21b43ad599c92be0e7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treeChopping: {fileID: 0}
+  treeHealth: 0
+  log: {fileID: 3387476929911335282, guid: b46d37d88e91ccd478cd84c29bd67fb6, type: 3}
+  root: {fileID: 54712864816702217, guid: d5546de878d3bee4b837767420531add, type: 3}
+  spawnPoint: {fileID: 3684327384821962596}
+  rootSpawnPoint: {fileID: 4368976889012392671}
+  objectType: 0
+  tree: {fileID: 11400000, guid: 17863684491d2e3408f986dbadc66f8a, type: 2}
+  shake_decay: 0.002
+  shake_intensity: 0.02
+--- !u!64 &4349916787997110149
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973228233241776061}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2040201386912258990, guid: 3ebf65d3a6489594ca09a35d85d43b0a, type: 3}
+--- !u!114 &6914513758211853899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973228233241776061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ce81dd37323ed42ab98d19231e9089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: {fileID: 11400000, guid: 17863684491d2e3408f986dbadc66f8a, type: 2}
+  buildingType: {fileID: 0}
+  allowedType: 
+--- !u!1 &3684327384821962596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250039159579702361}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &250039159579702361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684327384821962596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.01, z: -0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164602935277360391}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5719100795698308424
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +244,7 @@ GameObject:
   - component: {fileID: 2469286659358223274}
   - component: {fileID: 3589247910019397516}
   - component: {fileID: 8251775048657450034}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PT_Fruit_Tree_01_green_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,6 +261,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1164602935277360391}
   m_RootOrder: 0
@@ -192,10 +285,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -221,6 +316,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6262691154084524410
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +328,7 @@ GameObject:
   - component: {fileID: 5134591824467236821}
   - component: {fileID: 8287977009070255178}
   - component: {fileID: 6788130300613750309}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PT_Fruit_Tree_01_green_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,6 +345,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1164602935277360391}
   m_RootOrder: 2
@@ -272,10 +369,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -301,3 +400,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6851935817305174009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4368976889012392671}
+  m_Layer: 0
+  m_Name: RootSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4368976889012392671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6851935817305174009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.032, y: -0.296, z: -0.031}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164602935277360391}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
