@@ -127,22 +127,21 @@ public class Player : MonoBehaviour
                                 _slot.ItemObject.boneNames);
                             break;
                         case ItemType.Tool:
-                            tool = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform;
-                            break;
-                        case ItemType.Consumables:
-                            switch (_slot.ItemObject.type)
+                            if (_slot.item.Id == 16)
                             {
-                                case ItemType.Tool:
-                                    offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandHandTransform)
-                                        .transform;
-                                    break;
-                                case ItemType.Consumables:
-                                    offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandWristTransform)
-                                        .transform;
-                                    break;
+                                //Balta kontrolü.
+                                tool = Instantiate(_slot.ItemObject.characterDisplay, offhandHandTransform).transform;
+                                break;
                             }
-
-                            break;
+                            else
+                            {
+                                tool = Instantiate(_slot.ItemObject.characterDisplay, toolTransform).transform;
+                                break;
+                            }
+                        case ItemType.Consumables:
+                            offhand = Instantiate(_slot.ItemObject.characterDisplay, offhandWristTransform)
+                                .transform;
+                            break; 
                         case ItemType.Boots:
                             boots = boneCombiner.AddLimb(_slot.ItemObject.characterDisplay, _slot.ItemObject.boneNames);
                             break;

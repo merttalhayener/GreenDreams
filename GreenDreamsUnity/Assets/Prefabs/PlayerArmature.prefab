@@ -171,12 +171,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440463160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.018, y: 0.2566, z: 0.0243}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7060387879358214939}
-  m_RootOrder: 1
+  m_Father: {fileID: 6619582805679880571}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739712126
 GameObject:
@@ -201,13 +201,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739712126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.041, y: 0.265, z: 0.044}
+  m_LocalRotation: {x: 0.019941827, y: 0.31477875, z: 0.0066150683, w: 0.9489325}
+  m_LocalPosition: {x: -0.006573567, y: 0.07054462, z: 0.06279994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2648002084126652490}
-  m_RootOrder: 1
+  m_Father: {fileID: 1753223382546797424}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2140867053
 GameObject:
@@ -238,7 +238,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2648002084126652490}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123837680525945851
 GameObject:
@@ -997,7 +997,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6619582805679880571}
-  - {fileID: 1440463161}
   m_Father: {fileID: 1237765837827283382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1648,6 +1647,7 @@ MonoBehaviour:
   distanceToTree: {x: 0, y: 0, z: 0}
   choppingClip: {fileID: 8300000, guid: 54b708aac98082744a4f1e54a804dc15, type: 3}
   source: {fileID: 2123049280}
+  axeEquiped: 0
 --- !u!114 &2123049278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,6 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90dd1669498724d4d96cb73bc5189953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingCanvas: {fileID: 0}
   inventory: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   equipment: {fileID: 11400000, guid: 43835e75255697f44b8c11400e3fd98a, type: 2}
   attributes: []
@@ -2375,6 +2376,7 @@ Transform:
   m_Children:
   - {fileID: 3696767109174329365}
   - {fileID: 3986466886859674189}
+  - {fileID: 1440463161}
   m_Father: {fileID: 7060387879358214939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2725,7 +2727,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1753223382546797424}
-  - {fileID: 1739712127}
   - {fileID: 2140867054}
   m_Father: {fileID: 1312094843163088267}
   m_RootOrder: 0
@@ -2888,6 +2889,7 @@ Transform:
   - {fileID: 5773364635195575647}
   - {fileID: 317195719963560677}
   - {fileID: 543450653215881498}
+  - {fileID: 1739712127}
   m_Father: {fileID: 2648002084126652490}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
