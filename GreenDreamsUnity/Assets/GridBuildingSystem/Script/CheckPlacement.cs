@@ -7,6 +7,7 @@ public class CheckPlacement : MonoBehaviour
     [SerializeField] private BuildingManager buildingManager;
     [SerializeField]private ObjectTypeManager buildingTypeManager;
     [SerializeField] public List<BuildingTypes> buildingAllowedType;
+  
 
 
     private ObjectTypeManager otherBuildingTypeManager;
@@ -37,7 +38,7 @@ public class CheckPlacement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+       
         //SurfaceAlignment();
         if (isPlaced==false)
         {
@@ -46,6 +47,7 @@ public class CheckPlacement : MonoBehaviour
             {
               directionArrow.SetActive(true);
             }
+            
         }
 
         else

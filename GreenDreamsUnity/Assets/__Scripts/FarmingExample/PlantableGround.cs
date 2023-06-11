@@ -17,6 +17,8 @@ public class PlantableGround : MonoBehaviour
 
     [Range(0f, 100f)] // waterLevel deðeri 0 ile 100 arasýnda olacak
     public float waterLevel;
+    private float minWaterLevel=0f;
+    private float maxWaterLevel=100f;
 
     [Range(0f, 100f)] // büyütmeKatsayýsý deðeri 0 ile 100 arasýnda olacak
     public float büyütmeKatsayýsý;
@@ -31,6 +33,7 @@ public class PlantableGround : MonoBehaviour
         //Baþlangýç deðerleri atandý
         büyütmeKatsayýsý = 0f;
         sulanmýþ = false;
+        waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
     }
 
     private void Update()
