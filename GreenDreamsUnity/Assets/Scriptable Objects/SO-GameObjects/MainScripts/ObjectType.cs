@@ -6,7 +6,7 @@ public enum Types
     {
         Tree,
         Rock,
-        Farm,
+        FarmZone,
         Default
     }
 

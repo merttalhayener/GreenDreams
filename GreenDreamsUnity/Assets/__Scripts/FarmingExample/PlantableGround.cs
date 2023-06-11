@@ -10,37 +10,36 @@ public class PlantableGround : MonoBehaviour
     public GameObject slot3;
     public GameObject slot4;
     public GameObject targetSlot;
+    
 
     public bool sulanmýþ;
-    public bool gübrelenmiþ;
 
-    public float waterLevel; //Clamp edilmeli
-    public float fertilizerLevel; //Clamp edilmeli
 
+    [Range(0f, 100f)] // waterLevel deðeri 0 ile 100 arasýnda olacak
+    public float waterLevel;
+
+    [Range(0f, 100f)] // büyütmeKatsayýsý deðeri 0 ile 100 arasýnda olacak
     public float büyütmeKatsayýsý;
 
     //Bu script zemindeki slotlarý çekip o slotlarýn boþ olup olmadýðýný kontrol edecek.
     //Eðer slotlar boþ ise ekim iþleminde boþ slota tohumun eklenmesini saðlayacak.(Yani hedef bir slot belirleyecek)
     //Zeminin sulanmýþ olup olmadýðý ve gübrelenmiþ olup olmadýðý burda tutulacak.
 
-    private void Awake()
+    private void Start()
     {
+        //waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
         //Baþlangýç deðerleri atandý
         büyütmeKatsayýsý = 0f;
-        waterLevel = 50f;
-        fertilizerLevel = 50f;
-
         sulanmýþ = false;
-        gübrelenmiþ = false;
-        
     }
+
     private void Update()
     {
         CalculateGrowthMultiply();
-        CheckEmptySlot();
+        waterLevel -= 2f * Time.deltaTime;
     }
 
-    private void CheckEmptySlot()
+    public void CheckEmptySlot()
     {
         //Bu script ekim iþlemi sýrasýnda PlayerPlantingManagerdan çekilecek.
         //Bu script zemindeki slotlarý çekip o slotlarýn boþ olup olmadýðýný kontrol edecek.
@@ -67,13 +66,14 @@ public class PlantableGround : MonoBehaviour
         {
             targetSlot = null;
         }
+
     }
 
-    private void CheckWaterAndFertilizerisEnough()
+    private void CheckWaterisEnough()
     {
         //Su seviyesi belli bir seviyenin üstünde ise;
 
-        if (waterLevel >= 50)
+        if (waterLevel >= 25)
         {
           sulanmýþ = true;
         }
@@ -81,32 +81,25 @@ public class PlantableGround : MonoBehaviour
         {
             sulanmýþ=false;
         }
-       
-        //Gübre seviyesi belli bir seviyenin üstünde ise;
-        if(fertilizerLevel >= 50)
-        {
-           gübrelenmiþ = true;
-        }
-        else
-        {
-            gübrelenmiþ=false;
-        }
     }
 
     public float CalculateGrowthMultiply()
     {
-        CheckWaterAndFertilizerisEnough();
+        CheckWaterisEnough();
         if (sulanmýþ)
         {
-            büyütmeKatsayýsý = 50f;
-
-            if (gübrelenmiþ)
-            {
-                büyütmeKatsayýsý += 50f;
-            }
+            büyütmeKatsayýsý = 100f;
+        }
+        else
+        {
+            büyütmeKatsayýsý = 0f;
         }
         return büyütmeKatsayýsý;
     }
 
-   
+    public void PlantSeedToFarm(GameObject targetSeed)
+    {
+        targetSlot = Instantiate(targetSeed, targetSlot.transform.position, targetSlot.transform.rotation, targetSlot.transform);
+      
+    }
 }

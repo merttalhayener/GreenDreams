@@ -13,7 +13,7 @@ public class TreeChopping : MonoBehaviour
     public float damage;
     private PlayerStatsManager playerStatsManager;
 
-    private ObjectTypeManager typeManager;
+    public ObjectTypeManager typeManager;
 
     public Vector3 distanceToTree;
 
@@ -67,6 +67,7 @@ public class TreeChopping : MonoBehaviour
             }
 
         }
+        
     }
 
     public void CalculateDistance()

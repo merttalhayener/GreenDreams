@@ -10,6 +10,6 @@ public class Rock : ObjectType
     private void Awake()
     {
         hardness = 1500f;
-        Debug.Log("ROCK ZEMÝNDE");
+        
     }
 }
