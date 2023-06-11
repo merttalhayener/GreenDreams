@@ -30,8 +30,8 @@ Material:
     - _Cubemapp: 1
     - _EnableFog: 0
     - _EnableRotation: 0
-    - _Exposure: 1
-    - _FogFill: 0.5
+    - _Exposure: 0.49999976
+    - _FogFill: 1
     - _FogHeight: 1
     - _FogIntensity: 1
     - _FogMessage: 0

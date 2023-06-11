@@ -15,60 +15,106 @@ public class LightingManager : MonoBehaviour
 
     [SerializeField] private DateTime dateTime;
 
-    //public float rotationSpeed = 1.0f;
-    //public float startRotation = 0f;
-    //public float endRotation = 360f;
+    private float transitionDuration = 2f; // Geçiþ süresi
+    private float transitionSpeed = 1f; // Geçiþ hýzý
+    private float targetIntensity; // Hedef intensity deðeri
+    private float currentIntensity; // Mevcut intensity deðeri
+    private float intensityVelocity; // Intensity deðiþim hýzý
+
+    public Material skyboxMaterial;
+    private float targetExposure; // Hedef exposure deðeri
+    private float currentExposure; // Mevcut exposure deðeri
+    private float exposureVelocity; // Exposure deðiþim hýzý
+
     private void UpdateDateTime(DateTime dateTime)
     {
-        
         hour = (float)dateTime.Hour;
         minute = (float)dateTime.Minutes;
 
         float saatDakika = hour + (minute / 60f);
-        TimeOfDay = saatDakika;       
+        TimeOfDay = saatDakika;
     }
 
     private void OnEnable()
     {
         TimeManager.OnDateTimeChanged += UpdateDateTime;
     }
+
     private void OnDisable()
     {
         TimeManager.OnDateTimeChanged -= UpdateDateTime;
     }
 
-
     private void Update()
     {
-        
-        
         if (Preset == null)
             return;
 
         if (Application.isPlaying)
         {
-            UpdateLighting(TimeOfDay/24f);
+            UpdateLighting(TimeOfDay / 24f);
         }
         else
         {
-            UpdateLighting(TimeOfDay/24f);
+            UpdateLighting(TimeOfDay / 24f);
         }
     }
 
     private void UpdateLighting(float timePercent)
     {
-        //RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
-        //RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
-
         if (DirectionalLight != null)
         {
-            //DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170,0));
+            targetIntensity = CalculateIntensityFromTime(timePercent);
+            currentIntensity = Mathf.SmoothDamp(currentIntensity, targetIntensity, ref intensityVelocity, transitionDuration / transitionSpeed);
+            DirectionalLight.intensity = currentIntensity;
 
-            //float innerTimePercent = Time.time % rotationSpeed / rotationSpeed;
-            //Quaternion startQuaternion = Quaternion.Euler(new Vector3(startRotation, 170, 0));
-            //Quaternion endQuaternion = Quaternion.Euler(new Vector3(endRotation, 170, 0));
-            //DirectionalLight.transform.localRotation = Quaternion.Lerp(startQuaternion, endQuaternion, timePercent);
+            targetExposure = CalculateExposureFromTime(timePercent);
+            currentExposure = Mathf.SmoothDamp(currentExposure, targetExposure, ref exposureVelocity, transitionDuration / transitionSpeed);
+            skyboxMaterial.SetFloat("_Exposure", currentExposure);
+        }
+    }
+
+    private float CalculateIntensityFromTime(float timePercent)
+    {
+        // Saate göre uygun bir intensity deðeri hesaplayýn.
+        // Burada smooth geçiþler için gerekli hesaplamalarý yapýn.
+        // Örneðin:
+        if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
+        {
+            // Yüksek intensity deðeri
+            return 1.5f;
+        }
+        else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
+        {
+            // Düþük intensity deðeri
+            return 0f;
+        }
+        else
+        {
+            // Orta intensity deðeri
+            return 0.75f;
+        }
+    }
+
+    private float CalculateExposureFromTime(float timePercent)
+    {
+        // Saate göre uygun bir exposure deðeri hesaplayýn.
+        // Burada smooth geçiþler için gerekli hesaplamalarý yapýn.
+        // Örneðin:
+        if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
+        {
+            // Yüksek exposure deðeri
+            return 0.5f;
+        }
+        else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
+        {
+            // Düþük exposure deðeri
+            return 0f;
+        }
+        else
+        {
+            // Orta exposure deðeri
+            return 1.0f;
         }
     }
 
@@ -76,7 +122,7 @@ public class LightingManager : MonoBehaviour
     {
         if (DirectionalLight != null)
             return;
-        if (RenderSettings.sun !=null)
+        if (RenderSettings.sun != null)
         {
             DirectionalLight = RenderSettings.sun;
         }
