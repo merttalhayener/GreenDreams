@@ -13,7 +13,7 @@ public class PlantableGround : MonoBehaviour
     
 
     public bool sulanmýþ;
-
+    public GrowthStage currentStage;
 
     [Range(0f, 100f)] // waterLevel deðeri 0 ile 100 arasýnda olacak
     public float waterLevel;
@@ -26,6 +26,12 @@ public class PlantableGround : MonoBehaviour
     //Bu script zemindeki slotlarý çekip o slotlarýn boþ olup olmadýðýný kontrol edecek.
     //Eðer slotlar boþ ise ekim iþleminde boþ slota tohumun eklenmesini saðlayacak.(Yani hedef bir slot belirleyecek)
     //Zeminin sulanmýþ olup olmadýðý ve gübrelenmiþ olup olmadýðý burda tutulacak.
+    public enum GrowthStage
+    {
+        Seed,
+        Sprout,
+        Harvest
+    }
 
     private void Start()
     {
@@ -34,6 +40,7 @@ public class PlantableGround : MonoBehaviour
         büyütmeKatsayýsý = 0f;
         sulanmýþ = false;
         waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
+        currentStage=GrowthStage.Seed;
     }
 
     private void Update()
