@@ -32,21 +32,34 @@ public class Craft : MonoBehaviour
     Button wateringCanBtn;
     Button tobaccoBtn;
     Button teaBtn;
+    Button stickBtn;
+    Button nailsBtn;
+    Button fireplaceBtn;
     #endregion
 
     #region "CraftButtons"
-    public Button axeCraftBtn;
+    Button axeCraftBtn;
     Button hammerCraftBtn;
     Button hoeCraftBtn;
     Button wateringCanCraftBtn;
     Button tobaccoCraftBtn;
     Button teaCraftBtn;
+    Button stickCraftBtn;
+    Button nailsCraftBtn;
+    Button fireplaceCraftBtn;
     #endregion
 
     #region "Tarif Fields"
     public TextMeshProUGUI selectedTarif;
     public TextMeshProUGUI axeTarif;
     public TextMeshProUGUI hammerTarif;
+    public TextMeshProUGUI hoeTarif;
+    public TextMeshProUGUI wateringCanTarif;
+    public TextMeshProUGUI tobaccoTarif;
+    public TextMeshProUGUI teaTarif;
+    public TextMeshProUGUI stickTarif;
+    public TextMeshProUGUI nailTarif;
+    public TextMeshProUGUI fireplaceTarif;
 
     #endregion
 
@@ -61,6 +74,11 @@ public class Craft : MonoBehaviour
     public GameObject hammerDescription;
     public GameObject hoeDescription;
     public GameObject wateringDescription;
+    public GameObject tobacccoDescription;
+    public GameObject teaDescription;
+    public GameObject stickDescription;
+    public GameObject nailDescription;
+    public GameObject fireplaceDesciprtion;
     #endregion
 
 
@@ -84,6 +102,16 @@ public class Craft : MonoBehaviour
         hoeBtn.onClick.AddListener(delegate { OpenHammerDescription(); });
         wateringCanBtn = craftingScreenUI.transform.Find("WateringButtonItem").GetComponent<Button>();
         wateringCanBtn.onClick.AddListener(delegate { OpenWateringDescription(); });
+        tobaccoBtn = craftingScreenUI.transform.Find("TobaccoButton").GetComponent<Button>();
+        tobaccoBtn.onClick.AddListener(delegate { OpenTobaccoDescription(); });
+        teaBtn = craftingScreenUI.transform.Find("TeaButton").GetComponent<Button>();
+        teaBtn.onClick.AddListener(delegate { OpenTeaDescription(); });
+        stickBtn = craftingScreenUI.transform.Find("StickButton").GetComponent<Button>();
+        stickBtn.onClick.AddListener(delegate { OpenStickDescription(); });
+        nailsBtn = craftingScreenUI.transform.Find("NailButton").GetComponent<Button>();
+        nailsBtn.onClick.AddListener(delegate { OpenNailDescription(); });
+        fireplaceBtn = craftingScreenUI.transform.Find("FirePlaceButton").GetComponent<Button>();
+        fireplaceBtn.onClick.AddListener(delegate { OpenFirePlaceDescription(); });
 
 
         #endregion
@@ -94,19 +122,119 @@ public class Craft : MonoBehaviour
         setDesciprtionText();
     }
 
+    public void OpenNailDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
+        nailDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[2].data;
+        setRecipe(selectedItem);
+        selectedTarif = nailTarif;
+    }
+
+    public void OpenFirePlaceDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(true);
+
+
+        selectedItem = database.ItemObjects[22].data;
+        setRecipe(selectedItem);
+        selectedTarif = fireplaceTarif;
+    }
+    public void OpenStickDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
+        stickDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[0].data;
+        setRecipe(selectedItem);
+        selectedTarif = stickTarif;
+    }
+    public void OpenTeaDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
+        teaDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[22].data;
+        setRecipe(selectedItem);
+        selectedTarif = teaTarif;
+    }
+    public void OpenTobaccoDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
+        tobacccoDescription.SetActive(true);
+        
+        selectedItem = database.ItemObjects[21].data;
+        setRecipe(selectedItem);
+        selectedTarif = tobaccoTarif;
+    }
     public void OpenWateringDescription()
     {
         axeDescription.SetActive(false);
         hammerDescription.SetActive(false);
         hoeDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
         wateringDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[19].data;
+        setRecipe(selectedItem);
+        selectedTarif = wateringCanTarif;
     }
     public void OpenHoeDescription()
     {
         wateringDescription.SetActive(false);
         axeDescription.SetActive(false);
         hammerDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
         hoeDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[10].data;
+        setRecipe(selectedItem);
+        selectedTarif = hoeTarif;
 
     }
     public void OpenHammerDescription()
@@ -114,6 +242,11 @@ public class Craft : MonoBehaviour
         hoeDescription.SetActive(false);
         wateringDescription.SetActive(false);
         axeDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
         hammerDescription.SetActive(true);
 
         selectedItem = database.ItemObjects[17].data;
@@ -126,6 +259,11 @@ public class Craft : MonoBehaviour
         hoeDescription.SetActive(false);
         wateringDescription.SetActive(false);
         hammerDescription.SetActive(false);
+        teaDescription.SetActive(false);
+        tobacccoDescription.SetActive(false);
+        stickDescription.SetActive(false);
+        nailDescription.SetActive(false);
+        fireplaceDesciprtion.SetActive(false);
         axeDescription.SetActive(true);
 
         selectedItem = database.ItemObjects[16].data;

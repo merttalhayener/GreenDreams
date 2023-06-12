@@ -20,14 +20,14 @@ MonoBehaviour:
     Amount: 1
     Metarials:
     - Item:
-        Name: "Kesik K\xFCt\xFCk"
-        Id: 15
+        Name: Stick
+        Id: 0
         buffs: []
       Amount: 2
       Metarials: []
     - Item:
-        Name: Knife
-        Id: 18
+        Name: Stone
+        Id: 1
         buffs: []
       Amount: 1
       Metarials: []
@@ -38,20 +38,86 @@ MonoBehaviour:
     Amount: 1
     Metarials:
     - Item:
-        Name: Log
-        Id: 15
+        Name: Stick
+        Id: 0
+        buffs: []
+      Amount: 2
+      Metarials: []
+    - Item:
+        Name: Stone
+        Id: 1
         buffs: []
       Amount: 2
       Metarials: []
   - Item:
-      Name: aaaaa
-      Id: 3
+      Name: Hoe
+      Id: 10
       buffs: []
     Amount: 1
     Metarials:
     - Item:
-        Name: "Kesik K\xFCt\xFCk"
-        Id: 15
+        Name: Stick
+        Id: 0
         buffs: []
       Amount: 2
+      Metarials: []
+    - Item:
+        Name: Stone
+        Id: 1
+        buffs: []
+      Amount: 2
+      Metarials: []
+  - Item:
+      Name: Stick
+      Id: 0
+      buffs: []
+    Amount: 4
+    Metarials:
+    - Item:
+        Name: Log
+        Id: 15
+        buffs: []
+      Amount: 1
+      Metarials: []
+  - Item:
+      Name: Nail
+      Id: 2
+      buffs: []
+    Amount: 3
+    Metarials:
+    - Item:
+        Name: Stone
+        Id: 1
+        buffs: []
+      Amount: 1
+      Metarials: []
+  - Item:
+      Name: WateringCan
+      Id: 19
+      buffs: []
+    Amount: 1
+    Metarials:
+    - Item:
+        Name: Log
+        Id: 15
+        buffs: []
+      Amount: 1
+      Metarials: []
+    - Item:
+        Name: Stick
+        Id: 0
+        buffs: []
+      Amount: 1
+      Metarials: []
+  - Item:
+      Name: FirePlace
+      Id: 22
+      buffs: []
+    Amount: 1
+    Metarials:
+    - Item:
+        Name: Stone
+        Id: 1
+        buffs: []
+      Amount: 3
       Metarials: []

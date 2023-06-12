@@ -11,7 +11,8 @@ public enum ItemType
     Consumables,
     Boots,
     Chest,
-    Log,
+    Resources,
+    Build,
     Default
 }
 

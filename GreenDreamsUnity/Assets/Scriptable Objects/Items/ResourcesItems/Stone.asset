@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b544355b639134c833311fae7335d4, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: 1a2c8df41b5e407449901242f514e4f1, type: 3}
+  characterDisplay: {fileID: 0}
+  stackable: 1
+  type: 5
+  description: 
+  data:
+    Name: Stone
+    Id: 1
+    buffs: []
+  groundItem: {fileID: 579367391337068507, guid: 8d6cd0365299ff243a38a25cb515d231,
+    type: 3}
+  boneNames: []
