@@ -11,6 +11,7 @@ public class FarmingController : MonoBehaviour
     [SerializeField] private PlantableGround plantableGround;
     public ObjectTypeManager typeManager;
     public GameObject seed;
+  
 
 
     void Update()
