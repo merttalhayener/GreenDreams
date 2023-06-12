@@ -12,10 +12,12 @@ public class FarmingController : MonoBehaviour
     [SerializeField] private TimeManager timeManager;
     public ObjectTypeManager typeManager;
     public GameObject seed;
+    
 
     private void Start()
     {
          timeManager = FindObjectOfType<TimeManager>();
+         SetTag("Selectable");
     }
 
     void Update()
@@ -27,7 +29,12 @@ public class FarmingController : MonoBehaviour
             
             CheckHarvestPlants();
             Plant();
+
         }
+    }
+    public void SetTag(string newTag)
+    {
+        gameObject.tag = newTag;
     }
 
     public void Plant()

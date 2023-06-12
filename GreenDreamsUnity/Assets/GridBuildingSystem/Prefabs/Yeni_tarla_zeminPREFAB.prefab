@@ -141,10 +141,9 @@ GameObject:
   - component: {fileID: 1125928126433282625}
   - component: {fileID: 6020237588051894064}
   - component: {fileID: 8616705198199383829}
-  - component: {fileID: 957157997}
   m_Layer: 0
   m_Name: Yeni_tarla_zeminPREFAB
-  m_TagString: Selectable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,25 +316,8 @@ MonoBehaviour:
   slot4: {fileID: 4485372015635324238}
   targetSlot: {fileID: 0}
   timeManager: {fileID: 0}
+  plants: []
   "sulanm\u0131\u015F": 0
   waterLevel: 80
   ekilenBitki: {fileID: 0}
   "b\xFCy\xFCtmeKatsay\u0131s\u0131": 0
---- !u!114 &957157997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7441450896597455674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 0.87
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
