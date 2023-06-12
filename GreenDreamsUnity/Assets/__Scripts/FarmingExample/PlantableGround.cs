@@ -12,6 +12,8 @@ public class PlantableGround : MonoBehaviour
     public GameObject slot4;
     public GameObject targetSlot;
     public TimeManager timeManager;
+    
+    public List<GameObject> plants;
 
     public bool sulanmýþ;
   
@@ -56,22 +58,27 @@ public class PlantableGround : MonoBehaviour
         if(slot1.transform.childCount == 0)
         {
            targetSlot = slot1;
+           
         }
         else if (slot2.transform.childCount == 0)
         {
             targetSlot = slot2;
+            
         }
         else if (slot3.transform.childCount == 0)
         {
             targetSlot = slot3;
+           
         }
         else if (slot4.transform.childCount == 0)
         {
             targetSlot = slot4;
+            
         }
         else
         {
             targetSlot = null;
+
         }
 
     }
@@ -109,5 +116,8 @@ public class PlantableGround : MonoBehaviour
         GameObject ekilenBitkiObjesi = Instantiate(targetSeed, targetSlot.transform.position, targetSlot.transform.rotation, targetSlot.transform);
         ekilenBitki = ekilenBitkiObjesi;
         timeManager.plantList.Add(ekilenBitki);
+        plants.Add(ekilenBitki);
     }
+
+   
 }

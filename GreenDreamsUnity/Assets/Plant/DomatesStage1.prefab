@@ -97,8 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStage: 0
+  canHarvest: 0
   growthDuration: 10
   sproutPrefab: {fileID: 7161321127812800117, guid: 8e8fbe1ba54c90747aa20946d62590a7,
     type: 3}
   harvestPrefab: {fileID: 142732879901725658, guid: d25ddb9fae0e847468ee4e9753766f11,
+    type: 3}
+  harvestedPrefab: {fileID: 3387476929911335282, guid: b46d37d88e91ccd478cd84c29bd67fb6,
     type: 3}

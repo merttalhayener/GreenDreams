@@ -9,10 +9,14 @@ public class FarmingController : MonoBehaviour
 {
     [SerializeField] private OutlineSelecter selector;
     [SerializeField] private PlantableGround plantableGround;
+    [SerializeField] private TimeManager timeManager;
     public ObjectTypeManager typeManager;
     public GameObject seed;
-  
 
+    private void Start()
+    {
+         timeManager = FindObjectOfType<TimeManager>();
+    }
 
     void Update()
     {
@@ -20,6 +24,8 @@ public class FarmingController : MonoBehaviour
         {
             plantableGround = selector.selectedObject.GetComponent<PlantableGround>();
             typeManager = selector.selectedObject.GetComponent<ObjectTypeManager>();
+            
+            CheckHarvestPlants();
             Plant();
         }
     }
@@ -32,6 +38,34 @@ public class FarmingController : MonoBehaviour
             plantableGround.CheckEmptySlot(); 
             plantableGround.PlantSeedToFarm(seed);
         }
+        else
+        {
+            return;
+        }
     }
-   
+
+    public void CheckHarvestPlants()
+    {
+        if (typeManager.objectType.type.ToString() == "FarmZone" )
+        {
+            plantableGround = selector.selectedObject.GetComponent<PlantableGround>();
+            typeManager = selector.selectedObject.GetComponent<ObjectTypeManager>();
+
+            foreach (GameObject plant in plantableGround.plants)
+            {
+                PlantManager plantManager = plant.GetComponent<PlantManager>();
+
+                if (plantManager != null && plantManager.canHarvest)
+                {
+                    plantableGround.plants.Remove(plant);
+                    timeManager.plantList.Remove(plant);
+                    plantManager.HarvestThis();
+                }
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
 }
