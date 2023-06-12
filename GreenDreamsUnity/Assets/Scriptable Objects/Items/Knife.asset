@@ -19,7 +19,7 @@ MonoBehaviour:
   type: 1
   description: 
   data:
-    Name: 
+    Name: Knife
     Id: 18
     buffs: []
   groundItem: {fileID: 4682650962112100238, guid: ce2204ad7743b3445befdd8da95cda27,

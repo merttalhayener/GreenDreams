@@ -18,7 +18,7 @@ MonoBehaviour:
   type: 5
   description: 
   data:
-    Name: 
+    Name: "Kesik K\xFCt\xFCk"
     Id: 15
     buffs: []
   groundItem: {fileID: 3387476929911335282, guid: b46d37d88e91ccd478cd84c29bd67fb6,

@@ -12,7 +12,7 @@ public class CursorLock : MonoBehaviour
     public GameObject Inventory;
     public GameObject Equipment;
     public GameObject ToolbeltOnScreen;
-    public GameObject Toolbelt;
+    
     public GameObject buildingCanvas;
     public GameObject questBG;
     public GameObject questPersonIMG;
@@ -28,7 +28,7 @@ public class CursorLock : MonoBehaviour
     public bool inventoryIsClosed;
     public bool equipmentIsClosed;
     public bool toolbeltOnScreenIsClosed;
-    public bool toolbeltIsClosed;
+  
     public bool miniMapIsClosed;
     public bool questBGIsClosed;
     public bool weatherBGIsClosed;
@@ -47,8 +47,8 @@ public class CursorLock : MonoBehaviour
 
         inventoryIsClosed = false;
         equipmentIsClosed = false;
-        toolbeltIsClosed = true;
-        toolbeltOnScreenIsClosed = false;
+       
+        //toolbeltOnScreenIsClosed = false;
         miniMapIsClosed = false;
         questBGIsClosed = false;
         weatherBGIsClosed = false;
@@ -60,8 +60,8 @@ public class CursorLock : MonoBehaviour
 
         Inventory.SetActive(true);
         Equipment.SetActive(true);
-        Toolbelt.SetActive(false);
-        ToolbeltOnScreen.SetActive(true);
+        
+        //ToolbeltOnScreen.SetActive(true);
         miniMap.SetActive(true);
         questBG.SetActive(true);
         questPersonIMG.SetActive(true);
@@ -75,7 +75,7 @@ public class CursorLock : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (inventoryIsClosed && equipmentIsClosed && toolbeltIsClosed && toolbeltOnScreenIsClosed == false && miniMapIsClosed == false && weatherBGIsClosed == false)
+            if (inventoryIsClosed && equipmentIsClosed && miniMapIsClosed == false && weatherBGIsClosed == false)
             {
                 Debug.Log("bastý");
                 Cursor.lockState = CursorLockMode.None;
@@ -83,8 +83,8 @@ public class CursorLock : MonoBehaviour
                 source.PlayOneShot(inventoryOpenSound, 0.3f);
                 Inventory.SetActive(true);
                 Equipment.SetActive(true);
-                Toolbelt.SetActive(true);
-                ToolbeltOnScreen.SetActive(false);
+               
+                //ToolbeltOnScreen.SetActive(true);
                 miniMap.SetActive(false);
                 questBG.SetActive(false);
                 questPersonIMG.SetActive(false);
@@ -94,8 +94,8 @@ public class CursorLock : MonoBehaviour
 
                 inventoryIsClosed = false;
                 equipmentIsClosed = false;
-                toolbeltIsClosed = false;
-                toolbeltOnScreenIsClosed = true;
+                
+                //toolbeltOnScreenIsClosed = false;
                 miniMapIsClosed = true;
                 questBGIsClosed = true;
                 weatherBGIsClosed = true;
@@ -115,16 +115,16 @@ public class CursorLock : MonoBehaviour
                 source.PlayOneShot(inventoryOpenSound, 0.3f);
                 Inventory.SetActive(false);
                 Equipment.SetActive(false);
-                Toolbelt.SetActive(false);
-                ToolbeltOnScreen.SetActive(true);
+                
+                //ToolbeltOnScreen.SetActive(true);
                 miniMap.SetActive(true);
                 weatherBG.SetActive(true);
                 
 
                 inventoryIsClosed = true;
                 equipmentIsClosed = true;
-                toolbeltIsClosed = true;
-                toolbeltOnScreenIsClosed = false;
+                
+                //toolbeltOnScreenIsClosed = false;
                 miniMapIsClosed = false;
                 weatherBGIsClosed = false;
                 

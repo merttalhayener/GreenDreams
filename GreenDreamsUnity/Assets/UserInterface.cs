@@ -11,7 +11,7 @@ using System.Linq;
 
 public abstract class UserInterface : MonoBehaviour
 {
-   
+
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     public Sprite nullSprite;
@@ -50,7 +50,7 @@ public abstract class UserInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         // slotsOnInterface.UpdateSlotDisplay();
     }
     public abstract void CreateSlots();
@@ -87,7 +87,7 @@ public abstract class UserInterface : MonoBehaviour
     public GameObject CreateTempItem(GameObject obj)
     {
         GameObject tempItem = null;
-        if(slotsOnInterface[obj].item.Id >= 0)
+        if (slotsOnInterface[obj].item.Id >= 0)
         {
             tempItem = new GameObject();
             var rt = tempItem.AddComponent<RectTransform>();
@@ -131,7 +131,7 @@ public static class MouseData
 
 public static class ExtensionMethods
 {
-   
+
     public static void UpdateSlotDisplay(this Dictionary<GameObject, InventorySlot> _slotsOnInterface)
     {
         foreach (KeyValuePair<GameObject, InventorySlot> _slot in _slotsOnInterface)
@@ -145,7 +145,7 @@ public static class ExtensionMethods
             else
             {
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1,1,1,0);
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }

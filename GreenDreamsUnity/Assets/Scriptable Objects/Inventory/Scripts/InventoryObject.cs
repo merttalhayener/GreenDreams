@@ -41,7 +41,19 @@ public class InventoryObject : ScriptableObject
     public void RemoveByItem(Item _item, int _amount)
     {
         InventorySlot slot = FindItemOnInventory(_item);
-        slot.UpdateSlot(_item, _amount);
+
+
+        if(slot.amount - _amount == 0)
+        {
+            slot.UpdateSlot(_item, slot.amount);
+            slot.RemoveItem();
+        }
+        else
+        {
+            slot.UpdateSlot(_item, slot.amount - _amount);
+        }
+
+      
     }
 
     public int EmptySlotCount

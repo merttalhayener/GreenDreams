@@ -19,7 +19,7 @@ MonoBehaviour:
   type: 6
   description: 
   data:
-    Name: 
+    Name: Bone
     Id: 0
     buffs: []
   groundItem: {fileID: 0}

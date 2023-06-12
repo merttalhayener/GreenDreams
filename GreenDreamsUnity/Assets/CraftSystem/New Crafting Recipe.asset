@@ -20,20 +20,32 @@ MonoBehaviour:
     Amount: 1
     Metarials:
     - Item:
-        Name: 
+        Name: "Kesik K\xFCt\xFCk"
         Id: 15
         buffs: []
-      Amount: 1
+      Amount: 2
       Metarials: []
     - Item:
-        Name: 
-        Id: 17
+        Name: Knife
+        Id: 18
         buffs: []
       Amount: 1
       Metarials: []
   - Item:
-      Name: Knife
-      Id: 18
+      Name: Hammer
+      Id: 17
+      buffs: []
+    Amount: 1
+    Metarials:
+    - Item:
+        Name: Log
+        Id: 15
+        buffs: []
+      Amount: 2
+      Metarials: []
+  - Item:
+      Name: aaaaa
+      Id: 3
       buffs: []
     Amount: 1
     Metarials:

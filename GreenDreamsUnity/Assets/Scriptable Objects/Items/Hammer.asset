@@ -19,7 +19,7 @@ MonoBehaviour:
   type: 1
   description: 
   data:
-    Name: 
+    Name: Hammer
     Id: 17
     buffs: []
   groundItem: {fileID: 6429754719941523525, guid: 79559352bbd4e7b47a28ccc5f927dac5,

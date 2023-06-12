@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,57 +18,80 @@ public class Craft : MonoBehaviour
 
     public ItemDatabaseObject database;
 
-    //CatButtons
+
+    #region "CatButtons"
     Button toolsBtn;
     Button farmingBtn;
     Button buildingBtn;
-    //ItemButton
+    #endregion
+
+    #region "ItemButtons"
     Button axeBtn;
     Button hammerBtn;
     Button hoeBtn;
     Button wateringCanBtn;
     Button tobaccoBtn;
     Button teaBtn;
-    //CraftButton
-    Button axeCraftBtn;
+    #endregion
+
+    #region "CraftButtons"
+    public Button axeCraftBtn;
     Button hammerCraftBtn;
     Button hoeCraftBtn;
     Button wateringCanCraftBtn;
     Button tobaccoCraftBtn;
     Button teaCraftBtn;
+    #endregion
 
-    //Category
+    #region "Tarif Fields"
+    public TextMeshProUGUI selectedTarif;
+    public TextMeshProUGUI axeTarif;
+    public TextMeshProUGUI hammerTarif;
+
+    #endregion
+
+
+    #region "Category"
     public GameObject toolsCategory;
     public GameObject farmingCategory;
     public GameObject buildCategory;
-    //Descriptions
+    #endregion
+    #region "Descriptions"
     public GameObject axeDescription;
     public GameObject hammerDescription;
     public GameObject hoeDescription;
     public GameObject wateringDescription;
-    // Start is called before the first frame update
+    #endregion
+
+
+    Item selectedItem = null;
+    List<RecipeItem> recipeList = null;
+    int craftItemAmount = 0;
+
+
     void Start()
     {
-        //_craftButton = craftingScreenUI.transform.Find("CraftButton").GetComponent<Button>();
-        //_craftButton = GameObject.Find("CraftButton").GetComponent<Button>();
-        //_craftButton.onClick.AddListener(delegate { onCraftButtonClicked(); });
+        #region "Mert'in amelelikleri"
+
 
         toolsBtn = craftingScreenUI.transform.Find("ToolButton").GetComponent<Button>();
         toolsBtn.onClick.AddListener(delegate { OpenToolsCategory(); });
         axeBtn = craftingScreenUI.transform.Find("AxeButtonItem").GetComponent<Button>();
         axeBtn.onClick.AddListener(delegate { OpenAxeDescription(); });
         hammerBtn = craftingScreenUI.transform.Find("HammerButtonItem").GetComponent<Button>();
-        hammerBtn.onClick.AddListener(delegate{OpenHammerDescription(); });
+        hammerBtn.onClick.AddListener(delegate { OpenHammerDescription(); });
         hoeBtn = craftingScreenUI.transform.Find("HoeButtonItem").GetComponent<Button>();
         hoeBtn.onClick.AddListener(delegate { OpenHammerDescription(); });
         wateringCanBtn = craftingScreenUI.transform.Find("WateringButtonItem").GetComponent<Button>();
         wateringCanBtn.onClick.AddListener(delegate { OpenWateringDescription(); });
-        
-       
+
+
+        #endregion
+
     }
     void Update()
     {
-
+        setDesciprtionText();
     }
 
     public void OpenWateringDescription()
@@ -83,7 +107,7 @@ public class Craft : MonoBehaviour
         axeDescription.SetActive(false);
         hammerDescription.SetActive(false);
         hoeDescription.SetActive(true);
-        
+
     }
     public void OpenHammerDescription()
     {
@@ -91,7 +115,11 @@ public class Craft : MonoBehaviour
         wateringDescription.SetActive(false);
         axeDescription.SetActive(false);
         hammerDescription.SetActive(true);
-        
+
+        selectedItem = database.ItemObjects[17].data;
+        setRecipe(selectedItem);
+        selectedTarif = hammerTarif;
+
     }
     public void OpenAxeDescription()
     {
@@ -99,7 +127,63 @@ public class Craft : MonoBehaviour
         wateringDescription.SetActive(false);
         hammerDescription.SetActive(false);
         axeDescription.SetActive(true);
+
+        selectedItem = database.ItemObjects[16].data;
+        setRecipe(selectedItem);
+        selectedTarif = axeTarif;
+
+
     }
+
+
+
+    void setDesciprtionText()
+    {
+        if (selectedTarif != null)
+        {
+            selectedTarif.text = "";
+            if (recipeList.Count > 0)
+            {
+                foreach (var recipe in recipeList)
+                {
+                    var slotItem = inventoryObject.GetSlots.Where(i => i.item.Id == recipe.Item.Id).FirstOrDefault();
+                    int slotAmount = 0;
+
+                    if (slotItem != null)
+                    {
+                        slotAmount = slotItem.amount;
+                    }
+
+                    selectedTarif.text += recipe.Quantity.ToString() + " " + recipe.Item.Name + " [" + slotAmount.ToString() + "]\n";
+                }
+            }
+
+        }
+
+    }
+
+    void setRecipe(Item selectedItem)
+    {
+        recipeList = new List<RecipeItem>();
+        foreach (var recipe in CraftingRecipe.MaterialList)
+        {
+            if (recipe.Item.Id == selectedItem.Id)
+            {
+                craftItemAmount = recipe.Amount;
+                foreach (var metarialItem in recipe.Metarials)
+                {
+                    using (RecipeItem recipeItem = new RecipeItem())
+                    {
+                        recipeItem.Item = database.ItemObjects[metarialItem.Item.Id].data;
+                        recipeItem.Quantity = metarialItem.Amount;
+                        recipeList.Add(recipeItem);
+                    }
+                }
+            }
+        }
+    }
+
+
     public void OpenToolsCategory()
     {
         buildCategory.SetActive(false);
@@ -119,90 +203,67 @@ public class Craft : MonoBehaviour
         buildCategory.SetActive(true);
     }
 
-    void onCraftButtonClicked()
+    public void onCraftButtonClicked()
     {
-        int itemId = int.Parse(GameObject.Find("itemId").GetComponent<TMPro.TextMeshProUGUI>().text);
-        var item = database.ItemObjects[itemId].data;
-        if (item != null)
+        if (selectedItem != null)
         {
-            craftItem(item);
+            craftItem();
         }
     }
 
-    void craftItem(Item item)
+    void craftItem()
     {
-        int craftItemAmount = 0;
-        List<RecipeItem> recipeList = new List<RecipeItem>();
 
-        foreach (var recipe in CraftingRecipe.MaterialList)
+        if (recipeList.Count == 0)
         {
-            if (recipe.Item.Id == item.Id)
-            {
-                craftItemAmount = recipe.Amount;
-                foreach (var metarialItem in recipe.Metarials)
-                {
-                    using (RecipeItem recipeItem = new RecipeItem())
-                    {
-                        recipeItem.Item = database.ItemObjects[metarialItem.Item.Id].data;
-                        recipeItem.Quantity = metarialItem.Amount;
-                        recipeList.Add(recipeItem);
-                    }
-                }
-            }
+            Debug.LogWarning("Recipe Cannot found for: " + selectedItem.Name + "(Id:" + selectedItem.Id + ")");
         }
 
-
-        int slotItemCount = getRecipeItemCountInInventory(recipeList);
-
-        if (slotItemCount>0)
+        if (checkInventorySpace())
         {
-            if (checkInventorySpace())
-                {
-                foreach (var recipe in recipeList)
-                {
-                   // inventorySlot.UpdateSlot(recipe.Item, slotItemCount-recipe.Quantity); //inventory slotunda ki gerekli itemlarý kaldýrýr
+            if (removeRecipeItemsInInventory(recipeList))
+            {
+                inventoryObject.AddItem(selectedItem, craftItemAmount); // inventory'e yeni craftlanmýþ itemi ekler
+            }
+        }
+    }
 
-                    inventoryObject.RemoveByItem(recipe.Item, slotItemCount - recipe.Quantity);
+
+    bool removeRecipeItemsInInventory(List<RecipeItem> recipeList)
+    {
+
+        foreach (var recipe in recipeList)
+        {
+            var slotItem = inventoryObject.GetSlots.Where(i => i.item.Id == recipe.Item.Id).FirstOrDefault();
+            if (slotItem != null)
+            {
+                if (slotItem.amount > 0 && slotItem.amount >= recipe.Quantity)
+                {
+
                 }
-                inventoryObject.AddItem(item, craftItemAmount); // inventory'e yeni craftlanmýþ itemi ekler
+                else
+                {
+                    Debug.LogWarning("You dont have enough required stuff. You need " + recipe.Quantity.ToString() + " piece of " + recipe.Item.Name + ". You have only " + slotItem.amount.ToString() + " piece in your inventory.");
+                    return false;
+                }
             }
             else
             {
-                Debug.LogWarning("You don't have the required materials.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("You don't have any space");
-        }
-    }
-
-
-
-
-
-
-    int getRecipeItemCountInInventory(List<RecipeItem> recipeList)
-    {
-        //inventory kontrol edilecek
-        Player _player = (Player)Component.FindObjectsOfType(typeof(Player), false).FirstOrDefault();
-        InventorySlot[] _slots = _player.inventory.GetSlots;
-        foreach (var recipeItem in recipeList)
-        {
-            foreach (var slot in _slots)
-            {
-                if (slot.item.Id == recipeItem.Item.Id && slot.amount >= recipeItem.Quantity)
-                {
-                   return slot.amount;
-                }
+                Debug.LogWarning("You dont have enough required stuff.");
+                Debug.LogWarning("You dont have enough required stuff. You need " + recipe.Quantity.ToString() + " piece of " + recipe.Item.Name + ".");
+                return false;
             }
         }
 
-        return 0;
+        foreach (var recipe in recipeList)
+        {
+            var slotItem = inventoryObject.GetSlots.Where(i => i.item.Id == recipe.Item.Id).FirstOrDefault();
+            inventoryObject.RemoveByItem(recipe.Item, recipe.Quantity);
+        }
+
+
+        return true;
     }
-
-
-
 
     bool checkInventorySpace()
     {
@@ -213,12 +274,14 @@ public class Craft : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("You don't have any space in your inventory");
             return false;
         }
 
-       
-
     }
+
+
+
 
 }
 
