@@ -18,6 +18,7 @@ public class CursorLock : MonoBehaviour
     public GameObject questPersonIMG;
     public GameObject miniMap;
     public GameObject weatherBG;
+    public GameObject craftBG;
 
 
 
@@ -32,6 +33,7 @@ public class CursorLock : MonoBehaviour
     public bool questBGIsClosed;
     public bool weatherBGIsClosed;
     public bool buildingPanelIsClosed;
+    public bool craftingBGIsClosed;
 
 
 
@@ -51,6 +53,8 @@ public class CursorLock : MonoBehaviour
         questBGIsClosed = false;
         weatherBGIsClosed = false;
         buildingPanelIsClosed = true;
+        craftingBGIsClosed = false;
+        
 
 
 
@@ -63,6 +67,7 @@ public class CursorLock : MonoBehaviour
         questPersonIMG.SetActive(true);
         weatherBG.SetActive(true);
         buildingCanvas.SetActive(false);
+        craftBG.SetActive(false);
 
     }
 
@@ -85,6 +90,7 @@ public class CursorLock : MonoBehaviour
                 questPersonIMG.SetActive(false);
                 weatherBG.SetActive(false);
                 buildingCanvas.SetActive(false);
+                craftBG.SetActive(false);
 
                 inventoryIsClosed = false;
                 equipmentIsClosed = false;
@@ -94,6 +100,7 @@ public class CursorLock : MonoBehaviour
                 questBGIsClosed = true;
                 weatherBGIsClosed = true;
                 questBGIsClosed = true;
+                craftingBGIsClosed = true;
 
 
 
@@ -112,6 +119,7 @@ public class CursorLock : MonoBehaviour
                 ToolbeltOnScreen.SetActive(true);
                 miniMap.SetActive(true);
                 weatherBG.SetActive(true);
+                
 
                 inventoryIsClosed = true;
                 equipmentIsClosed = true;
@@ -119,10 +127,23 @@ public class CursorLock : MonoBehaviour
                 toolbeltOnScreenIsClosed = false;
                 miniMapIsClosed = false;
                 weatherBGIsClosed = false;
+                
             }
 
         }
-
+         if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (craftingBGIsClosed)
+            {
+                craftBG.SetActive(true);
+                craftingBGIsClosed = false;
+            }
+            else if (craftingBGIsClosed == false)
+            {
+                craftBG.SetActive(false);
+                craftingBGIsClosed = true;
+            }
+        }
 
 
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -189,6 +210,7 @@ public class CursorLock : MonoBehaviour
                 buildingCanvas.SetActive(false);
                 buildingPanelIsClosed = true;
             }
+            
 
 
         }

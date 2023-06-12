@@ -16,16 +16,107 @@ public class Craft : MonoBehaviour
     public InventorySlot inventorySlot;
 
     public ItemDatabaseObject database;
+
+    //CatButtons
+    Button toolsBtn;
+    Button farmingBtn;
+    Button buildingBtn;
+    //ItemButton
+    Button axeBtn;
+    Button hammerBtn;
+    Button hoeBtn;
+    Button wateringCanBtn;
+    Button tobaccoBtn;
+    Button teaBtn;
+    //CraftButton
+    Button axeCraftBtn;
+    Button hammerCraftBtn;
+    Button hoeCraftBtn;
+    Button wateringCanCraftBtn;
+    Button tobaccoCraftBtn;
+    Button teaCraftBtn;
+
+    //Category
+    public GameObject toolsCategory;
+    public GameObject farmingCategory;
+    public GameObject buildCategory;
+    //Descriptions
+    public GameObject axeDescription;
+    public GameObject hammerDescription;
+    public GameObject hoeDescription;
+    public GameObject wateringDescription;
     // Start is called before the first frame update
     void Start()
     {
         //_craftButton = craftingScreenUI.transform.Find("CraftButton").GetComponent<Button>();
-        _craftButton = GameObject.Find("CraftButton").GetComponent<Button>();
-        _craftButton.onClick.AddListener(delegate { onCraftButtonClicked(); });
+        //_craftButton = GameObject.Find("CraftButton").GetComponent<Button>();
+        //_craftButton.onClick.AddListener(delegate { onCraftButtonClicked(); });
+
+        toolsBtn = craftingScreenUI.transform.Find("ToolButton").GetComponent<Button>();
+        toolsBtn.onClick.AddListener(delegate { OpenToolsCategory(); });
+        axeBtn = craftingScreenUI.transform.Find("AxeButtonItem").GetComponent<Button>();
+        axeBtn.onClick.AddListener(delegate { OpenAxeDescription(); });
+        hammerBtn = craftingScreenUI.transform.Find("HammerButtonItem").GetComponent<Button>();
+        hammerBtn.onClick.AddListener(delegate{OpenHammerDescription(); });
+        hoeBtn = craftingScreenUI.transform.Find("HoeButtonItem").GetComponent<Button>();
+        hoeBtn.onClick.AddListener(delegate { OpenHammerDescription(); });
+        wateringCanBtn = craftingScreenUI.transform.Find("WateringButtonItem").GetComponent<Button>();
+        wateringCanBtn.onClick.AddListener(delegate { OpenWateringDescription(); });
+        
+       
     }
     void Update()
     {
 
+    }
+
+    public void OpenWateringDescription()
+    {
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(true);
+    }
+    public void OpenHoeDescription()
+    {
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        hoeDescription.SetActive(true);
+        
+    }
+    public void OpenHammerDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        axeDescription.SetActive(false);
+        hammerDescription.SetActive(true);
+        
+    }
+    public void OpenAxeDescription()
+    {
+        hoeDescription.SetActive(false);
+        wateringDescription.SetActive(false);
+        hammerDescription.SetActive(false);
+        axeDescription.SetActive(true);
+    }
+    public void OpenToolsCategory()
+    {
+        buildCategory.SetActive(false);
+        farmingCategory.SetActive(false);
+        toolsCategory.SetActive(true);
+    }
+    public void OpenFarmingCategory()
+    {
+        buildCategory.SetActive(false);
+        toolsCategory.SetActive(false);
+        farmingCategory.SetActive(true);
+    }
+    public void OpenBuildingCategory()
+    {
+        toolsCategory.SetActive(false);
+        farmingCategory.SetActive(false);
+        buildCategory.SetActive(true);
     }
 
     void onCraftButtonClicked()
