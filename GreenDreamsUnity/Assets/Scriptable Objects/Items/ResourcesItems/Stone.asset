@@ -21,6 +21,5 @@ MonoBehaviour:
     Name: Stone
     Id: 1
     buffs: []
-  groundItem: {fileID: 579367391337068507, guid: 8d6cd0365299ff243a38a25cb515d231,
-    type: 3}
+  groundItem: {fileID: 100000, guid: 26fb55e8ae34728499f6f45cd0527c73, type: 3}
   boneNames: []
