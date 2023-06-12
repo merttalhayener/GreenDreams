@@ -67,7 +67,6 @@ public class PlantManager : MonoBehaviour
 
                 currentMeshFilter.sharedMesh = harvestMesh;
                 currentMeshRenderer.sharedMaterials = harvestMaterials;
-
                 break;
 
             case GrowthStage.Harvest:

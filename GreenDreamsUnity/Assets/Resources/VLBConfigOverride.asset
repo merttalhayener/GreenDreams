@@ -17,7 +17,7 @@ MonoBehaviour:
   geometryTag: Untagged
   geometryRenderQueue: 3000
   _RenderPipeline: 1
-  _RenderingMode: 2
+  _RenderingMode: 1
   ditheringFactor: 0
   sharedMeshSides: 24
   sharedMeshSegments: 5
@@ -34,5 +34,5 @@ MonoBehaviour:
   featureEnabledMeshSkewing: 1
   featureEnabledShaderAccuracyHigh: 1
   pluginVersion: 1960
-  _DummyMaterial: {fileID: 0}
-  _BeamShader: {fileID: 0}
+  _DummyMaterial: {fileID: 2100000, guid: a295352cfe5d0e442aff708df83b672b, type: 2}
+  _BeamShader: {fileID: 4800000, guid: 73efed58e512d3d449b0db04555bb9c6, type: 3}

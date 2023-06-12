@@ -11,10 +11,10 @@ public class PlantableGround : MonoBehaviour
     public GameObject slot3;
     public GameObject slot4;
     public GameObject targetSlot;
-    
+    public TimeManager timeManager;
 
     public bool sulanmýþ;
-    public TimeManager timeManager;
+  
 
     [Range(0f, 100f)] // waterLevel deðeri 0 ile 100 arasýnda olacak
     public float waterLevel;
@@ -36,7 +36,8 @@ public class PlantableGround : MonoBehaviour
         büyütmeKatsayýsý = 0f;
         sulanmýþ = false;
         waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
-        
+        timeManager = FindObjectOfType<TimeManager>();
+
     }
 
     private void Update()

@@ -25,6 +25,14 @@ public class LightingManager : MonoBehaviour
     private float targetExposure; // Hedef exposure deðeri
     private float currentExposure; // Mevcut exposure deðeri
     private float exposureVelocity; // Exposure deðiþim hýzý
+  
+    [SerializeField] private float nightAmbientIntensity = 0f;
+    [SerializeField] private float morningAmbientIntensity = 1.1f;
+    [SerializeField] private float ambientTransitionDuration = 2f;
+
+    private float targetAmbientIntensity;
+    private float currentAmbientIntensity;
+    private float ambientIntensityVelocity;
 
     private void UpdateDateTime(DateTime dateTime)
     {
@@ -71,18 +79,18 @@ public class LightingManager : MonoBehaviour
             targetExposure = CalculateExposureFromTime(timePercent);
             currentExposure = Mathf.SmoothDamp(currentExposure, targetExposure, ref exposureVelocity, transitionDuration / transitionSpeed);
             skyboxMaterial.SetFloat("_Exposure", currentExposure);
+            
         }
-    }
 
-    private float CalculateIntensityFromTime(float timePercent)
+        float ambientTargetIntensity = CalculateAmbientIntensityFromTime(timePercent);
+        RenderSettings.ambientIntensity = Mathf.Lerp(RenderSettings.ambientIntensity, ambientTargetIntensity, Time.deltaTime / ambientTransitionDuration);
+    }
+    private float CalculateAmbientIntensityFromTime(float timePercent)
     {
-        // Saate göre uygun bir intensity deðeri hesaplayýn.
-        // Burada smooth geçiþler için gerekli hesaplamalarý yapýn.
-        // Örneðin:
         if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
         {
-            // Yüksek intensity deðeri
-            return 2f;
+            // Yüksek deðeri
+            return 1.2f;
         }
         else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
         {
@@ -92,7 +100,28 @@ public class LightingManager : MonoBehaviour
         else
         {
             // Orta intensity deðeri
-            return 1f;
+            return 0.75f;
+        }
+    }
+    private float CalculateIntensityFromTime(float timePercent)
+    {
+        // Saate göre uygun bir intensity deðeri hesaplayýn.
+        // Burada smooth geçiþler için gerekli hesaplamalarý yapýn.
+        // Örneðin:
+        if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
+        {
+            // Yüksek intensity deðeri
+            return 1.75f;
+        }
+        else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
+        {
+            // Düþük intensity deðeri
+            return 0f;
+        }
+        else
+        {
+            // Orta intensity deðeri
+            return 0.75f;
         }
     }
 
@@ -110,7 +139,7 @@ public class LightingManager : MonoBehaviour
         {
             // Düþük exposure deðeri
             
-            return 0.01f;
+            return 0.005f;
         }
         else
         {
