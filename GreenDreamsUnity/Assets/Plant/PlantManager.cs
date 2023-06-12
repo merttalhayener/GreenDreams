@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlantManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlantManager : MonoBehaviour
     private float growthTimer;
     public float growthDuration; // Büyüme süresi, istediðiniz süreyi ayarlayabilirsiniz
 
-    public GameObject seedPrefab;
+
     public GameObject sproutPrefab;
     public GameObject harvestPrefab;
 
@@ -25,21 +26,9 @@ public class PlantManager : MonoBehaviour
     {
         currentStage = GrowthStage.Seed;
         growthTimer = 0f;
-    
-    }
 
-    void Update()
-    {
-        if (currentStage != GrowthStage.Harvest)
-        {
-            growthTimer += Time.deltaTime;
-
-            if (growthTimer >= growthDuration)
-            {
-                GrowPlant();
-                growthTimer = 0f;
-            }
-        }
+        // currentPlant'e bitkiyi temsil eden GameObject'i atayýn
+        currentPlant = this.gameObject;
     }
 
     public void GrowPlant()
@@ -51,8 +40,8 @@ public class PlantManager : MonoBehaviour
                 currentStage = GrowthStage.Sprout;
 
                 // Game object'in 3D model bileþenlerini al
-                MeshFilter meshFilter = GetComponent<MeshFilter>();
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+                MeshFilter meshFilter = currentPlant.GetComponent<MeshFilter>();
+                MeshRenderer meshRenderer = currentPlant.GetComponent<MeshRenderer>();
 
                 // Sprout prefabýnýn 3D model ve materyallerini al
                 Mesh sproutMesh = sproutPrefab.GetComponent<MeshFilter>().sharedMesh;
@@ -68,21 +57,21 @@ public class PlantManager : MonoBehaviour
                 // Büyüme aþamasýný güncelle
                 currentStage = GrowthStage.Harvest;
 
-                // Game object'in 3D model bileþenlerini al
-                meshFilter = GetComponent<MeshFilter>();
-                meshRenderer = GetComponent<MeshRenderer>();
-
                 // Harvest prefabýnýn 3D model ve materyallerini al
                 Mesh harvestMesh = harvestPrefab.GetComponent<MeshFilter>().sharedMesh;
                 Material[] harvestMaterials = harvestPrefab.GetComponent<MeshRenderer>().sharedMaterials;
 
-                // Mesh filter'ýn modelini ve materyallerini deðiþtir
-                meshFilter.sharedMesh = harvestMesh;
-                meshRenderer.sharedMaterials = harvestMaterials;
+                // Objedeki mesh ve materyalleri deðiþtir
+                MeshFilter currentMeshFilter = currentPlant.GetComponent<MeshFilter>();
+                MeshRenderer currentMeshRenderer = currentPlant.GetComponent<MeshRenderer>();
+
+                currentMeshFilter.sharedMesh = harvestMesh;
+                currentMeshRenderer.sharedMaterials = harvestMaterials;
 
                 break;
 
             case GrowthStage.Harvest:
+                Debug.Log("Beni topla");
                 // Bitki hasat edildi, gerekirse temizleme iþlemleri yapýlabilir
                 break;
 
@@ -90,6 +79,4 @@ public class PlantManager : MonoBehaviour
                 break;
         }
     }
-
-   
 }

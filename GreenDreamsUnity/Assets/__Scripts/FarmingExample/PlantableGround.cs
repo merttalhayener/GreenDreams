@@ -1,3 +1,4 @@
+using Dputils.Systems.DateTime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,13 @@ public class PlantableGround : MonoBehaviour
     
 
     public bool sulanmýþ;
-    public GrowthStage currentStage;
+    public TimeManager timeManager;
 
     [Range(0f, 100f)] // waterLevel deðeri 0 ile 100 arasýnda olacak
     public float waterLevel;
     private float minWaterLevel=0f;
     private float maxWaterLevel=100f;
+    public GameObject ekilenBitki;
 
     [Range(0f, 100f)] // büyütmeKatsayýsý deðeri 0 ile 100 arasýnda olacak
     public float büyütmeKatsayýsý;
@@ -26,13 +28,7 @@ public class PlantableGround : MonoBehaviour
     //Bu script zemindeki slotlarý çekip o slotlarýn boþ olup olmadýðýný kontrol edecek.
     //Eðer slotlar boþ ise ekim iþleminde boþ slota tohumun eklenmesini saðlayacak.(Yani hedef bir slot belirleyecek)
     //Zeminin sulanmýþ olup olmadýðý ve gübrelenmiþ olup olmadýðý burda tutulacak.
-    public enum GrowthStage
-    {
-        Seed,
-        Sprout,
-        Harvest
-    }
-
+   
     private void Start()
     {
         //waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
@@ -40,7 +36,7 @@ public class PlantableGround : MonoBehaviour
         büyütmeKatsayýsý = 0f;
         sulanmýþ = false;
         waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
-        currentStage=GrowthStage.Seed;
+        
     }
 
     private void Update()
@@ -109,7 +105,8 @@ public class PlantableGround : MonoBehaviour
 
     public void PlantSeedToFarm(GameObject targetSeed)
     {
-        targetSlot = Instantiate(targetSeed, targetSlot.transform.position, targetSlot.transform.rotation, targetSlot.transform);
-      
+        GameObject ekilenBitkiObjesi = Instantiate(targetSeed, targetSlot.transform.position, targetSlot.transform.rotation, targetSlot.transform);
+        ekilenBitki = ekilenBitkiObjesi;
+        timeManager.plantList.Add(ekilenBitki);
     }
 }

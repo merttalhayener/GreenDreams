@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Dputils.Systems.DateTime 
+namespace Dputils.Systems.DateTime
 {
     public class TimeManager : MonoBehaviour
     {
@@ -10,15 +11,16 @@ namespace Dputils.Systems.DateTime
         public int dateInMonth;
         [Range(1, 4)]
         public int season;
-        [Range(2023,float.PositiveInfinity)]
+        [Range(2023, float.PositiveInfinity)]
         public int year;
         [Range(0, 24)]
         public int hour;
-        [Range(0, 6)]
+        [Range(0, 60)]
         public int minutes;
-
+        public List<GameObject> plantList;
 
         private DateTime DateTime;
+        private int previousDate;
 
         [Header("Tick Settings")]
         public int TickMinutesIncreased = 10;
@@ -30,12 +32,7 @@ namespace Dputils.Systems.DateTime
         private void Awake()
         {
             DateTime = new DateTime(dateInMonth, season - 1, year, hour, minutes * 10);
-
-            Debug.Log($"Starting Date: {DateTime.NewYearsDay(2)}");
-            Debug.Log($"Summer Solstice: {DateTime.SummerSolstice(4)}");
-            Debug.Log($"Pumpkin Harvest: {DateTime.PumpkinHarvest(10)}");
-            Debug.Log($"Starting of a Season: {DateTime.StartOfSeason(1, 3)}");
-            Debug.Log($"Starting of Winter: {DateTime.StartOfWinter(3)}");
+            previousDate = dateInMonth;
         }
 
         private void Start()
@@ -57,11 +54,31 @@ namespace Dputils.Systems.DateTime
         {
             AdvanceTime();
         }
+
         void AdvanceTime()
         {
             DateTime.AdvanceMinutes(TickMinutesIncreased);
 
+            if (DateTime.Date != previousDate)
+            {
+                CheckPlantGrowth();
+                previousDate = DateTime.Date;
+            }
+
             OnDateTimeChanged?.Invoke(DateTime);
+        }
+
+        void CheckPlantGrowth()
+        {
+            foreach (GameObject plantObject in plantList)
+            {
+                PlantManager plantManager = plantObject.GetComponent<PlantManager>();
+                if (plantManager != null)
+                {
+                    plantManager.GrowPlant();
+                    Debug.Log("BÝTKÝ BÜYÜ");
+                }
+            }
         }
     }
 
@@ -114,6 +131,7 @@ namespace Dputils.Systems.DateTime
         #endregion
 
         #region Time Advancement
+
         public void AdvanceMinutes(int SecondsToAdvanceBy)
         {
             if (minutes + SecondsToAdvanceBy >= 60)
@@ -141,6 +159,7 @@ namespace Dputils.Systems.DateTime
         private void AdvanceDay()
         {
             day++;
+            
             if (day > (Days)7)
             {
                 day = (Days)1;

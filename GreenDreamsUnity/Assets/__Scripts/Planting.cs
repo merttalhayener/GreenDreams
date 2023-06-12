@@ -15,12 +15,6 @@ public class Planting : MonoBehaviour
         InvokeRepeating("Growth", growthTime, growthTime);
     }
 
-
-    private void Update()
-    {
-       
-    }
-
     public void Growth()
     {
         if (currrentProgression != maxGrowth)

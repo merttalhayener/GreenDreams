@@ -82,7 +82,7 @@ public class LightingManager : MonoBehaviour
         if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
         {
             // Yüksek intensity deðeri
-            return 1.5f;
+            return 2f;
         }
         else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
         {
@@ -92,7 +92,7 @@ public class LightingManager : MonoBehaviour
         else
         {
             // Orta intensity deðeri
-            return 0.75f;
+            return 1f;
         }
     }
 
@@ -109,7 +109,8 @@ public class LightingManager : MonoBehaviour
         else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
         {
             // Düþük exposure deðeri
-            return 0f;
+            
+            return 0.01f;
         }
         else
         {
