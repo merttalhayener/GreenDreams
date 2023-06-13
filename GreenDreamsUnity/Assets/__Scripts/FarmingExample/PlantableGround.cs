@@ -12,6 +12,8 @@ public class PlantableGround : MonoBehaviour
     public GameObject slot4;
     public GameObject targetSlot;
     public TimeManager timeManager;
+    
+    public List<GameObject> plants;
 
     public bool sulanmýþ;
   
@@ -35,6 +37,7 @@ public class PlantableGround : MonoBehaviour
         //Baþlangýç deðerleri atandý
         büyütmeKatsayýsý = 0f;
         sulanmýþ = false;
+        SetTag("Selectable");
         waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
         timeManager = FindObjectOfType<TimeManager>();
 
@@ -45,7 +48,10 @@ public class PlantableGround : MonoBehaviour
         CalculateGrowthMultiply();
         waterLevel -= 2f * Time.deltaTime;
     }
-
+    public void SetTag(string newTag)
+    {
+        gameObject.tag = newTag;
+    }
     public void CheckEmptySlot()
     {
         //Bu script ekim iþlemi sýrasýnda PlayerPlantingManagerdan çekilecek.
@@ -56,22 +62,27 @@ public class PlantableGround : MonoBehaviour
         if(slot1.transform.childCount == 0)
         {
            targetSlot = slot1;
+           
         }
         else if (slot2.transform.childCount == 0)
         {
             targetSlot = slot2;
+            
         }
         else if (slot3.transform.childCount == 0)
         {
             targetSlot = slot3;
+           
         }
         else if (slot4.transform.childCount == 0)
         {
             targetSlot = slot4;
+            
         }
         else
         {
             targetSlot = null;
+
         }
 
     }
@@ -109,5 +120,9 @@ public class PlantableGround : MonoBehaviour
         GameObject ekilenBitkiObjesi = Instantiate(targetSeed, targetSlot.transform.position, targetSlot.transform.rotation, targetSlot.transform);
         ekilenBitki = ekilenBitkiObjesi;
         timeManager.plantList.Add(ekilenBitki);
+        plants.Add(ekilenBitki);
+        
     }
+
+   
 }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlantManager : MonoBehaviour
 {
     public GrowthStage currentStage;
+    public bool canHarvest;
     public enum GrowthStage
     {
         Seed,
@@ -19,13 +20,14 @@ public class PlantManager : MonoBehaviour
 
     public GameObject sproutPrefab;
     public GameObject harvestPrefab;
-
     private GameObject currentPlant;
+    public GameObject harvestedPrefab;
 
     void Start()
     {
         currentStage = GrowthStage.Seed;
         growthTimer = 0f;
+        canHarvest = false;
 
         // currentPlant'e bitkiyi temsil eden GameObject'i atayýn
         currentPlant = this.gameObject;
@@ -70,6 +72,7 @@ public class PlantManager : MonoBehaviour
                 break;
 
             case GrowthStage.Harvest:
+                canHarvest = true;
                 Debug.Log("Beni topla");
                 // Bitki hasat edildi, gerekirse temizleme iþlemleri yapýlabilir
                 break;
@@ -78,4 +81,21 @@ public class PlantManager : MonoBehaviour
                 break;
         }
     }
+
+    public void HarvestThis()
+    {
+        // Bitkinin konumunu ve dönüþünü al
+        Vector3 position = transform.position;
+        Quaternion rotation = transform.rotation;
+
+        // Yeni objeyi instantiate et
+        GameObject harvestedObject = Instantiate(harvestedPrefab, position, rotation);
+
+        // Eski bitkiyi sil
+        Destroy(this.gameObject);
+
+        // Hasat edilen objeyle istediðiniz iþlemleri yapabilirsiniz
+        // Örneðin, harvestedObject üzerindeki bileþenlere eriþebilir veya baþka iþlemler gerçekleþtirebilirsiniz
+    }
+
 }
