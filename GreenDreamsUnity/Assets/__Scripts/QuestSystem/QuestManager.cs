@@ -154,6 +154,13 @@ public class QuestManager : MonoBehaviour
             CompleteCurrentQuest(currentQuestIndex);
         }
     }
+    public void HandleFarmQuest()
+    {
+        if (quests[currentQuestIndex].questType == QuestType.Farm)
+        {
+            CompleteCurrentQuest(currentQuestIndex);
+        }
+    }
 
     public void HandleCollectQuest()
     {

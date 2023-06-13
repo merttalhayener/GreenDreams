@@ -5,7 +5,8 @@ public enum QuestType
     Build,
     Collect,
     UseItem,
-    Talk
+    Talk,
+    Farm
 }
 
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest System/Quest Data")]

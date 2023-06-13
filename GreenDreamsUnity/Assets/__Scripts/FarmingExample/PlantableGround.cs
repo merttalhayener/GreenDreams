@@ -2,6 +2,7 @@ using Dputils.Systems.DateTime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.Examples.TMP_ExampleScript_01;
 
 
 public class PlantableGround : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlantableGround : MonoBehaviour
     public TimeManager timeManager;
     
     public List<GameObject> plants;
+    public QuestManager questManager;
 
     public bool sulanmýþ;
   
@@ -33,6 +35,7 @@ public class PlantableGround : MonoBehaviour
    
     private void Start()
     {
+        questManager = FindObjectOfType<QuestManager>();
         //waterLevel = Mathf.Clamp(waterLevel, minWaterLevel, maxWaterLevel);
         //Baþlangýç deðerleri atandý
         büyütmeKatsayýsý = 0f;
@@ -121,7 +124,9 @@ public class PlantableGround : MonoBehaviour
         ekilenBitki = ekilenBitkiObjesi;
         timeManager.plantList.Add(ekilenBitki);
         plants.Add(ekilenBitki);
-        
+        questManager.HandleFarmQuest();
+
+
     }
 
    

@@ -15,7 +15,7 @@ MonoBehaviour:
   questType: 0
   wantedBuildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
   questName: Build Door
-  questDescription: Place door.
+  questDescription: Place door
   targetCount: 1
-  currentCount: 1
-  isCompleted: 1
+  currentCount: 0
+  isCompleted: 0

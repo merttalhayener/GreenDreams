@@ -15,7 +15,7 @@ MonoBehaviour:
   questType: 3
   wantedBuildingType: {fileID: 0}
   questName: secondTalk
-  questDescription: This is my land its yours now.
+  questDescription: This is my land its yours now
   targetCount: 1
-  currentCount: 1
-  isCompleted: 1
+  currentCount: 0
+  isCompleted: 0

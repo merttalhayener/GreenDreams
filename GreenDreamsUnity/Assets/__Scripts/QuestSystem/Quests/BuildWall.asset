@@ -15,7 +15,7 @@ MonoBehaviour:
   questType: 0
   wantedBuildingType: {fileID: 11400000, guid: 5f6243d0863054047904ac0bea4d5a7f, type: 2}
   questName: Build Wall
-  questDescription: Place 3 walls.
+  questDescription: Place 3 walls
   targetCount: 3
-  currentCount: 3
-  isCompleted: 1
+  currentCount: 0
+  isCompleted: 0

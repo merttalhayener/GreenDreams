@@ -15,7 +15,7 @@ MonoBehaviour:
   questType: 3
   wantedBuildingType: {fileID: 0}
   questName: WelcomeRex
-  questDescription: Welcome Rex.
+  questDescription: Welcome my grandson
   targetCount: 1
-  currentCount: 1
-  isCompleted: 1
+  currentCount: 0
+  isCompleted: 0
