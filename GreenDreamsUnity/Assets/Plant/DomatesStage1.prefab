@@ -103,5 +103,5 @@ MonoBehaviour:
     type: 3}
   harvestPrefab: {fileID: 142732879901725658, guid: d25ddb9fae0e847468ee4e9753766f11,
     type: 3}
-  harvestedPrefab: {fileID: 3387476929911335282, guid: b46d37d88e91ccd478cd84c29bd67fb6,
+  harvestedPrefab: {fileID: 8521649807543552427, guid: a647b8e3269d1024a876beaa87b5ccc2,
     type: 3}
