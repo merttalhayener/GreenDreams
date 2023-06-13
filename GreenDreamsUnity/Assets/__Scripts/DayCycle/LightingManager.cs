@@ -7,7 +7,7 @@ using Dputils.Systems.DateTime;
 public class LightingManager : MonoBehaviour
 {
     [SerializeField] private Light DirectionalLight;
-    [SerializeField] private LightingPreset Preset;
+   // [SerializeField] private LightingPreset Preset;
     [SerializeField, Range(0, 24)] private float TimeOfDay;
 
     [SerializeField, Range(0, 24)] private float hour;
@@ -55,8 +55,8 @@ public class LightingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Preset == null)
-            return;
+        //if (Preset == null)
+        //    return;
 
         if (Application.isPlaying)
         {
@@ -111,16 +111,19 @@ public class LightingManager : MonoBehaviour
         if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
         {
             // Yüksek intensity deðeri
-            return 1.75f;
+          
+            return 1.5f;
         }
         else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
         {
             // Düþük intensity deðeri
+        
             return 0f;
         }
         else
         {
             // Orta intensity deðeri
+           
             return 0.75f;
         }
     }
@@ -133,17 +136,20 @@ public class LightingManager : MonoBehaviour
         if (timePercent >= 0.5f && timePercent <= 0.75f) // Öðlen 12 ile akþam 6 arasýnda
         {
             // Yüksek exposure deðeri
+         
             return 0.5f;
         }
         else if (timePercent > 0.75f || timePercent < 0.25f) // Akþam 6 ile gece 12, gece 12 ile sabah 6 arasýnda
         {
             // Düþük exposure deðeri
-            
+          
+
             return 0.005f;
         }
         else
         {
             // Orta exposure deðeri
+           
             return 1.0f;
         }
     }

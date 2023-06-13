@@ -178,6 +178,6 @@ public class PlayerStatsManager : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Öldün");
+        //Debug.Log("Öldün");
     }
 }
