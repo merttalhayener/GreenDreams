@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Map 1/Scenes/Map 1 scenes.unity
     guid: 453f5ac29b1106e41a636ebd4ae6b121
   - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 94357694ac4df6b489e8bd805d697fd0
+  - enabled: 1
+    path: Assets/OficePackage/Scenes/OfficeScene.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
     path: Assets/Scenes/Map 1/Scenes/GreenMap1.unity
     guid: aa2c0b1a749ef22468efa1f6bb41c529
   m_configObjects:
