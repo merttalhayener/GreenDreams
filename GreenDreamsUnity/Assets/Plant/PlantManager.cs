@@ -14,7 +14,6 @@ public class PlantManager : MonoBehaviour
         Harvest
     }
 
-    private float growthTimer;
     public float growthDuration; // Büyüme süresi, istediðiniz süreyi ayarlayabilirsiniz
 
 
@@ -26,7 +25,7 @@ public class PlantManager : MonoBehaviour
     void Start()
     {
         currentStage = GrowthStage.Seed;
-        growthTimer = 0f;
+       
         canHarvest = false;
 
         // currentPlant'e bitkiyi temsil eden GameObject'i atayýn
